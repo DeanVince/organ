@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">年份：</label>
+								<div class="col-sm-8">
+									<input id="year" name="year" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">会员基本情况表id：</label>
+								<div class="col-sm-8">
+									<input id="organInfoId" name="organInfoId" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">工作人员总数：</label>
+								<div class="col-sm-8">
+									<input id="staffNumber" name="staffNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">专职人员人数：</label>
+								<div class="col-sm-8">
+									<input id="fullTimeStaffNumber" name="fullTimeStaffNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">兼职人员人数：</label>
+								<div class="col-sm-8">
+									<input id="partTimeStaffNumber" name="partTimeStaffNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">国家机关在职人数：</label>
+								<div class="col-sm-8">
+									<input id="organsServiceNumber" name="organsServiceNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">企事业单位人数：</label>
+								<div class="col-sm-8">
+									<input id="companyNumber" name="companyNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">离退休返聘人数：</label>
+								<div class="col-sm-8">
+									<input id="retirementNumber" name="retirementNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">其他人数：</label>
+								<div class="col-sm-8">
+									<input id="elseStaffNumber" name="elseStaffNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">30岁及以下人数：</label>
+								<div class="col-sm-8">
+									<input id="belowThirtyNumber" name="belowThirtyNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">30-40岁人数：</label>
+								<div class="col-sm-8">
+									<input id="thirtysNumber" name="thirtysNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">40-50岁人数：</label>
+								<div class="col-sm-8">
+									<input id="fourtysNumber" name="fourtysNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">50-60岁人数：</label>
+								<div class="col-sm-8">
+									<input id="fiftysNumber" name="fiftysNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">60岁以上人数：</label>
+								<div class="col-sm-8">
+									<input id="sixtysNumber" name="sixtysNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">高中及以下人数：</label>
+								<div class="col-sm-8">
+									<input id="highSchoolNumber" name="highSchoolNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">大专人数：</label>
+								<div class="col-sm-8">
+									<input id="collegeNumber" name="collegeNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">本科人数：</label>
+								<div class="col-sm-8">
+									<input id="degreeNumber" name="degreeNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">硕士人数：</label>
+								<div class="col-sm-8">
+									<input id="masterNumber" name="masterNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">博士人数：</label>
+								<div class="col-sm-8">
+									<input id="doctorNumber" name="doctorNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">出国留学人数：</label>
+								<div class="col-sm-8">
+									<input id="studyingAbroadNumber" name="studyingAbroadNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">持有社会工作者资格证书人数：</label>
+								<div class="col-sm-8">
+									<input id="workerCertificatesNumber" name="workerCertificatesNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">持有从事岗位相应专业技术证书人数：</label>
+								<div class="col-sm-8">
+									<input id="technicalCertificatesNumber" name="technicalCertificatesNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">党代表人数：</label>
+								<div class="col-sm-8">
+									<input id="partyDeputiesNumber" name="partyDeputiesNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">人大代表人数：</label>
+								<div class="col-sm-8">
+									<input id="peopleDeputiesNumber" name="peopleDeputiesNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">政协委员人数：</label>
+								<div class="col-sm-8">
+									<input id="cppccMemberNumber" name="cppccMemberNumber" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">填表人：</label>
+								<div class="col-sm-8">
+									<input id="preparer" name="preparer" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">填写日期：</label>
+								<div class="col-sm-8">
+									<input id="createTime" name="createTime" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">更改日期：</label>
+								<div class="col-sm-8">
+									<input id="updateTime" name="updateTime" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">删除标记：</label>
+								<div class="col-sm-8">
+									<input id="isDelete" name="isDelete" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/community/employ/add.js">
+	</script>
+</body>
+</html>

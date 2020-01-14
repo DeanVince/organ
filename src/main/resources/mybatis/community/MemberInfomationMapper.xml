@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.organization.community.dao.MemberInfomationDao">
+
+	<select id="get" resultType="com.organization.community.domain.MemberInfomationDO">
+		select `id`,`year`,`organ_info_id`,`member_name`,`address`,`dirctor_name`,`phone_number`,`employees_number`,`organ_type`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_member_infomation where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.organization.community.domain.MemberInfomationDO">
+		select `id`,`year`,`organ_info_id`,`member_name`,`address`,`dirctor_name`,`phone_number`,`employees_number`,`organ_type`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_member_infomation
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="year != null and year != ''"> and year = #{year} </if>
+		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
+		  		  <if test="memberName != null and memberName != ''"> and member_name = #{memberName} </if>
+		  		  <if test="address != null and address != ''"> and address = #{address} </if>
+		  		  <if test="dirctorName != null and dirctorName != ''"> and dirctor_name = #{dirctorName} </if>
+		  		  <if test="phoneNumber != null and phoneNumber != ''"> and phone_number = #{phoneNumber} </if>
+		  		  <if test="employeesNumber != null and employeesNumber != ''"> and employees_number = #{employeesNumber} </if>
+		  		  <if test="organType != null and organType != ''"> and organ_type = #{organType} </if>
+		  		  <if test="preparer != null and preparer != ''"> and preparer = #{preparer} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from organ_member_infomation
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="year != null and year != ''"> and year = #{year} </if>
+		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
+		  		  <if test="memberName != null and memberName != ''"> and member_name = #{memberName} </if>
+		  		  <if test="address != null and address != ''"> and address = #{address} </if>
+		  		  <if test="dirctorName != null and dirctorName != ''"> and dirctor_name = #{dirctorName} </if>
+		  		  <if test="phoneNumber != null and phoneNumber != ''"> and phone_number = #{phoneNumber} </if>
+		  		  <if test="employeesNumber != null and employeesNumber != ''"> and employees_number = #{employeesNumber} </if>
+		  		  <if test="organType != null and organType != ''"> and organ_type = #{organType} </if>
+		  		  <if test="preparer != null and preparer != ''"> and preparer = #{preparer} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.organization.community.domain.MemberInfomationDO" useGeneratedKeys="true" keyProperty="id">
+		insert into organ_member_infomation
+		(
+			`year`, 
+			`organ_info_id`, 
+			`member_name`, 
+			`address`, 
+			`dirctor_name`, 
+			`phone_number`, 
+			`employees_number`, 
+			`organ_type`, 
+			`preparer`, 
+			`create_time`, 
+			`update_time`, 
+			`is_delete`
+		)
+		values
+		(
+			#{year}, 
+			#{organInfoId}, 
+			#{memberName}, 
+			#{address}, 
+			#{dirctorName}, 
+			#{phoneNumber}, 
+			#{employeesNumber}, 
+			#{organType}, 
+			#{preparer}, 
+			#{createTime}, 
+			#{updateTime}, 
+			#{isDelete}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.organization.community.domain.MemberInfomationDO">
+		update organ_member_infomation 
+		<set>
+			<if test="year != null">`year` = #{year}, </if>
+			<if test="organInfoId != null">`organ_info_id` = #{organInfoId}, </if>
+			<if test="memberName != null">`member_name` = #{memberName}, </if>
+			<if test="address != null">`address` = #{address}, </if>
+			<if test="dirctorName != null">`dirctor_name` = #{dirctorName}, </if>
+			<if test="phoneNumber != null">`phone_number` = #{phoneNumber}, </if>
+			<if test="employeesNumber != null">`employees_number` = #{employeesNumber}, </if>
+			<if test="organType != null">`organ_type` = #{organType}, </if>
+			<if test="preparer != null">`preparer` = #{preparer}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="isDelete != null">`is_delete` = #{isDelete}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from organ_member_infomation where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from organ_member_infomation where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

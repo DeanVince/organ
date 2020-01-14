@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:include="pre/include::header(农业社团首页)"></head>
+
+<script>
+
+
+
+</script>
+<body>
+    <div class="header" th:include="/pre/include::top"></div>
+
+    <div class="navbar navbar-inverse navbar-static-top" th:include="/pre/include::nav(index)"></div>
+
+
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="announce">
+                    <div class="col-md-6">
+                        <div class="thumbnail middle pic_shows" style="height:308px;">
+                            <img src="/images/news.jpg" alt="" >
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="component">
+                            <div class="component_header">
+                                <div class="title">
+                                    <h3>通知公告</h3>
+                                </div>
+                                <a href="#" class="more"></a>
+                            </div>
+                            <div class="news component_body">
+                                <ul >
+                                    <li th:each="news,state : ${announmentList}">
+                                        <div class="">
+                                            <div class="title">
+                                                <a href="#" th:text="${news.title}">关于农业社团组织的2022新规</a>
+                                            </div>
+                                            <span class="pull-right" th:text="${#dates.format(news.publicTime, 'yyyy-MM-dd')}">2020-01-01</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="ad">
+                    <div class="thumbnail">
+                            <img src="/images/speed.png" alt="">
+                        </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="activity component">
+                        <div class="component_header">
+                            <div class="title">
+                                <h3>组织风采</h3>
+                            </div>
+                            <a href="#" class="more"></a>
+                        </div>
+                        <div class="news component_body">
+                            <ul th:each="news,state : ${activityList}">
+                                <li>
+                                    <div class="">
+                                        <div class="title-small">
+                                            <a href="#" th:text="${news.title}">关于农业社团组织的2022新规</a>
+                                        </div>
+                                        <span class="pull-right" th:text="${#dates.format(news.publicTime, 'yyyy-MM-dd')}">2020-01-01</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="activity component">
+                        <div class="component_header">
+                            <div class="title">
+                                <h3>机构概况</h3>
+                            </div>
+                            <a href="organization.html" class="more"></a>
+                        </div>
+                        <div class="news component_body">
+                            <ul>
+                                <li>
+                                    <div class="">
+                                        <a href="#">上海农业旅游经济协会</a>
+                                        <span class="pull-right">查看</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="">
+                                        <a href="#">上海农业旅游经济协会</a>
+                                        <span class="pull-right">查看</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="">
+                                        <a href="#">上海农业旅游经济协会</a>
+                                        <span class="pull-right">查看</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="">
+                                        <a href="#">上海农业旅游经济协会</a>
+                                        <span class="pull-right">查看</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="">
+                                        <a href="#">上海农业旅游经济协会</a>
+                                        <span class="pull-right">查看</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="">
+                                        <a href="#">上海农业旅游经济协会</a>
+                                        <span class="pull-right">查看</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="">
+                                        <a href="#">上海农业旅游经济协会</a>
+                                        <span class="pull-right">查看</span>
+                                    </div>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="activity component">
+                        <div class="component_header">
+                            <div class="title">
+                                <h3>统计数据</h3>
+                            </div>
+                        </div>
+                        <div class="component_body">
+                            <div class="data">
+                                <div class="icon">
+                                    <img src="/images/dataicon.png" alt="">
+                                    <a>统计数据</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="activity component">
+                        <div class="component_header">
+                            <div class="title">
+                                <h3>评选推荐</h3>
+                            </div>
+                            <a href="#" class="more"></a>
+                        </div>
+                        <div class="news component_body">
+                            <ul th:each="news,state : ${recommend}">
+                                <li>
+                                    <div class="">
+                                        <div class="title-small">
+                                            <a href="#" th:text="${news.title}">关于农业社团组织的2022新规</a>
+                                        </div>
+                                        <span class="pull-right" th:text="${#dates.format(news.publicTime, 'yyyy-MM-dd')}">2020-01-01</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="activity component">
+                        <div class="component_header">
+                            <div class="title">
+                                <h3>党建工作</h3>
+                            </div>
+                            <a href="#" class="more"></a>
+                        </div>
+                        <div class="news component_body">
+                            <ul th:each="news,state : ${partyList}">
+                                <li>
+                                    <div class="">
+                                        <div class="title-small">
+                                            <a href="#" th:text="${news.title}">关于农业社团组织的2022新规</a>
+                                        </div>
+                                        <span class="pull-right" th:text="${#dates.format(news.publicTime, 'yyyy-MM-dd')}">2020-01-01</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="activity component">
+                        <div class="component_header">
+                            <div class="title">
+                                <h3>政策法规</h3>
+                            </div>
+                            <a href="#" class="more"></a>
+                        </div>
+                        <div class="news component_body">
+                            <ul th:each="news,state : ${policiesList}">
+                                <li>
+                                    <div class="">
+                                        <div class="title-small">
+                                            <a href="#" th:text="${news.title}">关于农业社团组织的2022新规</a>
+                                        </div>
+                                        <span class="pull-right" th:text="${#dates.format(news.publicTime, 'yyyy-MM-dd')}">2020-01-01</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer" th:include="pre/include::footer"></div>
+
+
+
+</body>
+</html>

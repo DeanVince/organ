@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.organization.pre.dao.TypeDao">
+
+	<select id="get" resultType="com.organization.pre.domain.TypeDO">
+		select `id`,`name`,`create_name` from org_type where id = #{value} and is_delete = 0
+	</select>
+
+	<select id="list" resultType="com.organization.pre.domain.TypeDO">
+		select `id`,`name`,`create_name`,`is_delete` from org_type
+        <where>
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="name != null and name != ''"> and name = #{name} </if>
+		  		  <if test="createName != null and createName != ''"> and create_name = #{createName} </if>
+		  		  and is_delete = 0
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+ 	<select id="count" resultType="int">
+		select count(*) from org_type
+		 <where>
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="name != null and name != ''"> and name = #{name} </if>
+		  		  <if test="createName != null and createName != ''"> and create_name = #{createName} </if>
+		  		   and is_delete = 0
+		  		</where>
+	</select>
+
+	<insert id="save" parameterType="com.organization.pre.domain.TypeDO" useGeneratedKeys="true" keyProperty="id">
+		insert into org_type
+		(
+			`name`,
+			`create_name`,
+		)
+		values
+		(
+			#{name},
+			#{createName},
+		)
+	</insert>
+
+	<update id="update" parameterType="com.organization.pre.domain.TypeDO">
+		update org_type
+		<set>
+			<if test="name != null">`name` = #{name}, </if>
+			<if test="createName != null">`create_name` = #{createName}, </if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="remove">
+		update org_type is_delete = 1 where id = #{value}
+	</delete>
+
+	<delete id="batchRemove">
+		update org_type is_delete = 1 where id in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

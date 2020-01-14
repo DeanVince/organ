@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.organization.community.dao.NewsDao">
+
+	<select id="get" resultType="com.organization.community.domain.NewsDO">
+		select `id`,`title`,`author`,`content`,`public_time`,`tags`,`news_type`,`status`,`allow_comment`,`allow_evaluation_star`,`update_time` from organ_news where id = #{value} and is_delete=0
+	</select>
+
+	<select id="list" resultType="com.organization.community.domain.NewsDO">
+		select `id`,`title`,`author`,`content`,`public_time`,`tags`,`news_type`,`status`,`allow_comment`,`allow_evaluation_star`,`update_time` from organ_news
+        <where>
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="title != null and title != ''"> and title = #{title} </if>
+		  		  <if test="author != null and author != ''"> and author = #{author} </if>
+		  		  <if test="content != null and content != ''"> and content = #{content} </if>
+		  		  <if test="publicTime != null and publicTime != ''"> and public_time = #{publicTime} </if>
+		  		  <if test="tags != null and tags != ''"> and tags = #{tags} </if>
+		  		  <if test="newsType != null and newsType != ''"> and news_type = #{newsType} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="allowComment != null and allowComment != ''"> and allow_comment = #{allowComment} </if>
+		  		  <if test="allowEvaluationStar != null and allowEvaluationStar != ''"> and allow_evaluation_star = #{allowEvaluationStar} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  and is_delete = 0
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+ 	<select id="count" resultType="int">
+		select count(*) from organ_news
+		 <where>
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="title != null and title != ''"> and title = #{title} </if>
+		  		  <if test="author != null and author != ''"> and author = #{author} </if>
+		  		  <if test="content != null and content != ''"> and content = #{content} </if>
+		  		  <if test="publicTime != null and publicTime != ''"> and public_time = #{publicTime} </if>
+		  		  <if test="tags != null and tags != ''"> and tags = #{tags} </if>
+		  		  <if test="newsType != null and newsType != ''"> and news_type = #{newsType} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="allowComment != null and allowComment != ''"> and allow_comment = #{allowComment} </if>
+		  		  <if test="allowEvaluationStar != null and allowEvaluationStar != ''"> and allow_evaluation_star = #{allowEvaluationStar} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+				 and is_delete = 0
+		 </where>
+	</select>
+
+	<insert id="save" parameterType="com.organization.community.domain.NewsDO" useGeneratedKeys="true" keyProperty="id">
+		insert into organ_news
+		(
+			`title`,
+			`author`,
+			`content`,
+			`tags`,
+			`news_type`,
+			`status`,
+			`allow_comment`,
+			`allow_evaluation_star`
+		)
+		values
+		(
+			#{title},
+			#{author},
+			#{content},
+			#{tags},
+			#{newsType},
+			#{status},
+			#{allowComment},
+			#{allowEvaluationStar}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.organization.community.domain.NewsDO">
+		update organ_news
+		<set>
+			<if test="title != null">`title` = #{title}, </if>
+			<if test="author != null">`author` = #{author}, </if>
+			<if test="content != null">`content` = #{content}, </if>
+			<if test="tags != null">`tags` = #{tags}, </if>
+			<if test="newsType != null">`news_type` = #{newsType}, </if>
+			<if test="status != null">`status` = #{status}, </if>
+			<if test="allowComment != null">`allow_comment` = #{allowComment}, </if>
+			<if test="allowEvaluationStar != null">`allow_evaluation_star` = #{allowEvaluationStar}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="remove">
+		update organ_news set is_delete=1 where id = #{value}
+	</delete>
+
+	<delete id="batchRemove">
+		update organ_news set is_delete=1 where id in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

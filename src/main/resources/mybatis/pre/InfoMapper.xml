@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.organization.pre.dao.InfoDao">
+	<resultMap type="com.organization.pre.domain.InfoDO" id="InfoAndType" autoMapping="true">
+		<!-- id的使用一定要注意！！！下面的三表和四表查询体现的非常明显 -->
+		<id column="type_id" property="id"/>
+		<association property="typeDo" javaType="com.organization.pre.domain.TypeDO" autoMapping="true">
+		</association>
+	</resultMap>
+
+	<select id="get" resultType="com.organization.pre.domain.InfoDO">
+		select `id`,`name`,`setup_date`,`registrstion_authority`,`create_time`,`is_delete`,`type_id` from org_info where id = #{value}
+	</select>
+
+	<select id="list" resultMap="InfoAndType">
+		select org_info.`id`,org_info.`name`,`setup_date`,`registrstion_authority`,org_info.`create_time`,`type_id`,org_type.`id`,org_type.`name`,org_type.`create_name` from org_info
+		join org_type  on org_info.type_id=org_type.id
+        <where>
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="name != null and name != ''"> and name = #{name} </if>
+		  		  <if test="setupDate != null and setupDate != ''"> and setup_date = #{setupDate} </if>
+		  		  <if test="registrstionAuthority != null and registrstionAuthority != ''"> and registrstion_authority = #{registrstionAuthority} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
+		  		  <if test="typeId != null and typeId != ''"> and type_id = #{typeId} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by org_info.id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+ 	<select id="count" resultType="int">
+		select count(*) from org_info
+		 <where>
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="name != null and name != ''"> and name = #{name} </if>
+		  		  <if test="setupDate != null and setupDate != ''"> and setup_date = #{setupDate} </if>
+		  		  <if test="registrstionAuthority != null and registrstionAuthority != ''"> and registrstion_authority = #{registrstionAuthority} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
+		  		  <if test="typeId != null and typeId != ''"> and type_id = #{typeId} </if>
+		  		</where>
+	</select>
+
+	<insert id="save" parameterType="com.organization.pre.domain.InfoDO" useGeneratedKeys="true" keyProperty="id">
+		insert into org_info
+		(
+			`name`,
+			`setup_date`,
+			`registrstion_authority`,
+			`create_time`,
+			`is_delete`,
+			`type_id`
+		)
+		values
+		(
+			#{name},
+			#{setupDate},
+			#{registrstionAuthority},
+			#{createTime},
+			#{isDelete},
+			#{typeId}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.organization.pre.domain.InfoDO">
+		update org_info
+		<set>
+			<if test="name != null">`name` = #{name}, </if>
+			<if test="setupDate != null">`setup_date` = #{setupDate}, </if>
+			<if test="registrstionAuthority != null">`registrstion_authority` = #{registrstionAuthority}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="isDelete != null">`is_delete` = #{isDelete}, </if>
+			<if test="typeId != null">`type_id` = #{typeId}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="remove">
+-- 		delete from org_info where id = #{value}
+		update org_info set is_delete = 1 where id = #{value}
+	</delete>
+
+	<delete id="batchRemove">
+		update org_info set is_delete = 1 where id in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

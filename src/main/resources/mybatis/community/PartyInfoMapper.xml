@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.organization.community.dao.PartyInfoDao">
+
+	<select id="get" resultType="com.organization.community.domain.PartyInfoDO">
+		select `id`,`year`,`organ_info_id`,`party_members_number`,`full_time_party_members_number`,`organization_number`,`this_year_add_number`,`party_type`,`party_relationship`,`party_building_liaison`,`league_organization_number`,`trade_union_number`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_party_info where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.organization.community.domain.PartyInfoDO">
+		select `id`,`year`,`organ_info_id`,`party_members_number`,`full_time_party_members_number`,`organization_number`,`this_year_add_number`,`party_type`,`party_relationship`,`party_building_liaison`,`league_organization_number`,`trade_union_number`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_party_info
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="year != null and year != ''"> and year = #{year} </if>
+		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
+		  		  <if test="partyMembersNumber != null and partyMembersNumber != ''"> and party_members_number = #{partyMembersNumber} </if>
+		  		  <if test="fullTimePartyMembersNumber != null and fullTimePartyMembersNumber != ''"> and full_time_party_members_number = #{fullTimePartyMembersNumber} </if>
+		  		  <if test="organizationNumber != null and organizationNumber != ''"> and organization_number = #{organizationNumber} </if>
+		  		  <if test="thisYearAddNumber != null and thisYearAddNumber != ''"> and this_year_add_number = #{thisYearAddNumber} </if>
+		  		  <if test="partyType != null and partyType != ''"> and party_type = #{partyType} </if>
+		  		  <if test="partyRelationship != null and partyRelationship != ''"> and party_relationship = #{partyRelationship} </if>
+		  		  <if test="partyBuildingLiaison != null and partyBuildingLiaison != ''"> and party_building_liaison = #{partyBuildingLiaison} </if>
+		  		  <if test="leagueOrganizationNumber != null and leagueOrganizationNumber != ''"> and league_organization_number = #{leagueOrganizationNumber} </if>
+		  		  <if test="tradeUnionNumber != null and tradeUnionNumber != ''"> and trade_union_number = #{tradeUnionNumber} </if>
+		  		  <if test="preparer != null and preparer != ''"> and preparer = #{preparer} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from organ_party_info
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="year != null and year != ''"> and year = #{year} </if>
+		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
+		  		  <if test="partyMembersNumber != null and partyMembersNumber != ''"> and party_members_number = #{partyMembersNumber} </if>
+		  		  <if test="fullTimePartyMembersNumber != null and fullTimePartyMembersNumber != ''"> and full_time_party_members_number = #{fullTimePartyMembersNumber} </if>
+		  		  <if test="organizationNumber != null and organizationNumber != ''"> and organization_number = #{organizationNumber} </if>
+		  		  <if test="thisYearAddNumber != null and thisYearAddNumber != ''"> and this_year_add_number = #{thisYearAddNumber} </if>
+		  		  <if test="partyType != null and partyType != ''"> and party_type = #{partyType} </if>
+		  		  <if test="partyRelationship != null and partyRelationship != ''"> and party_relationship = #{partyRelationship} </if>
+		  		  <if test="partyBuildingLiaison != null and partyBuildingLiaison != ''"> and party_building_liaison = #{partyBuildingLiaison} </if>
+		  		  <if test="leagueOrganizationNumber != null and leagueOrganizationNumber != ''"> and league_organization_number = #{leagueOrganizationNumber} </if>
+		  		  <if test="tradeUnionNumber != null and tradeUnionNumber != ''"> and trade_union_number = #{tradeUnionNumber} </if>
+		  		  <if test="preparer != null and preparer != ''"> and preparer = #{preparer} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.organization.community.domain.PartyInfoDO" useGeneratedKeys="true" keyProperty="id">
+		insert into organ_party_info
+		(
+			`year`, 
+			`organ_info_id`, 
+			`party_members_number`, 
+			`full_time_party_members_number`, 
+			`organization_number`, 
+			`this_year_add_number`, 
+			`party_type`, 
+			`party_relationship`, 
+			`party_building_liaison`, 
+			`league_organization_number`, 
+			`trade_union_number`, 
+			`preparer`, 
+			`create_time`, 
+			`update_time`, 
+			`is_delete`
+		)
+		values
+		(
+			#{year}, 
+			#{organInfoId}, 
+			#{partyMembersNumber}, 
+			#{fullTimePartyMembersNumber}, 
+			#{organizationNumber}, 
+			#{thisYearAddNumber}, 
+			#{partyType}, 
+			#{partyRelationship}, 
+			#{partyBuildingLiaison}, 
+			#{leagueOrganizationNumber}, 
+			#{tradeUnionNumber}, 
+			#{preparer}, 
+			#{createTime}, 
+			#{updateTime}, 
+			#{isDelete}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.organization.community.domain.PartyInfoDO">
+		update organ_party_info 
+		<set>
+			<if test="year != null">`year` = #{year}, </if>
+			<if test="organInfoId != null">`organ_info_id` = #{organInfoId}, </if>
+			<if test="partyMembersNumber != null">`party_members_number` = #{partyMembersNumber}, </if>
+			<if test="fullTimePartyMembersNumber != null">`full_time_party_members_number` = #{fullTimePartyMembersNumber}, </if>
+			<if test="organizationNumber != null">`organization_number` = #{organizationNumber}, </if>
+			<if test="thisYearAddNumber != null">`this_year_add_number` = #{thisYearAddNumber}, </if>
+			<if test="partyType != null">`party_type` = #{partyType}, </if>
+			<if test="partyRelationship != null">`party_relationship` = #{partyRelationship}, </if>
+			<if test="partyBuildingLiaison != null">`party_building_liaison` = #{partyBuildingLiaison}, </if>
+			<if test="leagueOrganizationNumber != null">`league_organization_number` = #{leagueOrganizationNumber}, </if>
+			<if test="tradeUnionNumber != null">`trade_union_number` = #{tradeUnionNumber}, </if>
+			<if test="preparer != null">`preparer` = #{preparer}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="isDelete != null">`is_delete` = #{isDelete}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from organ_party_info where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from organ_party_info where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

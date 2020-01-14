@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:include="pre/include::header(信息资料)"></head>
+
+<body>
+    <div class="header" th:include="/pre/include::top"></div>
+    <div class="navbar navbar-inverse navbar-static-top" th:include="/pre/include::nav(info)"></div>
+
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="now_postion">
+                    <span>你当前所在的位置：</span><span>首页</span><span> &gt; </span><span>信息资料</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer" th:include="pre/include::footer"></div>
+
+</body>
+</html>

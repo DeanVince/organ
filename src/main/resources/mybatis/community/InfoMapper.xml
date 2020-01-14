@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.organization.community.dao.BaseInfoDao">
+
+	<select id="get" resultType="com.organization.community.domain.InfoDO">
+		select `id`,`company_name`,`company_code`,`manage_type`,`unit_type`,`business_unit`,`registration_date`,`certificate_end_time`,`sponsor_information`,`egistered_capital`,`source_capital`,`registered_address`,`contact_address`,`residential_occupancy`,`contact_name`,`contact_position`,`contact_phone`,`contact_email`,`contact_number`,`contact_fax`,`web_site_address`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_info where id = #{value} and is_delete=0
+	</select>
+
+	<select id="list" resultType="com.organization.community.domain.InfoDO">
+		select `id`,`company_name`,`company_code`,`manage_type`,`unit_type`,`business_unit`,`registration_date`,`certificate_end_time`,`sponsor_information`,`egistered_capital`,`source_capital`,`registered_address`,`contact_address`,`residential_occupancy`,`contact_name`,`contact_position`,`contact_phone`,`contact_email`,`contact_number`,`contact_fax`,`web_site_address`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_info
+        <where>
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="companyName != null and companyName != ''"> and company_name = #{companyName} </if>
+		  		  <if test="companyCode != null and companyCode != ''"> and company_code = #{companyCode} </if>
+		  		  <if test="manageType != null and manageType != ''"> and manage_type = #{manageType} </if>
+		  		  <if test="unitType != null and unitType != ''"> and unit_type = #{unitType} </if>
+		  		  <if test="businessUnit != null and businessUnit != ''"> and business_unit = #{businessUnit} </if>
+		  		  <if test="registrationDate != null and registrationDate != ''"> and registration_date = #{registrationDate} </if>
+		  		  <if test="certificateEndTime != null and certificateEndTime != ''"> and certificate_end_time = #{certificateEndTime} </if>
+		  		  <if test="sponsorInformation != null and sponsorInformation != ''"> and sponsor_information = #{sponsorInformation} </if>
+		  		  <if test="egisteredCapital != null and egisteredCapital != ''"> and egistered_capital = #{egisteredCapital} </if>
+		  		  <if test="sourceCapital != null and sourceCapital != ''"> and source_capital = #{sourceCapital} </if>
+		  		  <if test="registeredAddress != null and registeredAddress != ''"> and registered_address = #{registeredAddress} </if>
+		  		  <if test="contactAddress != null and contactAddress != ''"> and contact_address = #{contactAddress} </if>
+		  		  <if test="residentialOccupancy != null and residentialOccupancy != ''"> and residential_occupancy = #{residentialOccupancy} </if>
+		  		  <if test="contactName != null and contactName != ''"> and contact_name = #{contactName} </if>
+		  		  <if test="contactPosition != null and contactPosition != ''"> and contact_position = #{contactPosition} </if>
+		  		  <if test="contactPhone != null and contactPhone != ''"> and contact_phone = #{contactPhone} </if>
+		  		  <if test="contactEmail != null and contactEmail != ''"> and contact_email = #{contactEmail} </if>
+		  		  <if test="contactNumber != null and contactNumber != ''"> and contact_number = #{contactNumber} </if>
+		  		  <if test="contactFax != null and contactFax != ''"> and contact_fax = #{contactFax} </if>
+		  		  <if test="webSiteAddress != null and webSiteAddress != ''"> and web_site_address = #{webSiteAddress} </if>
+		  		  <if test="preparer != null and preparer != ''"> and preparer = #{preparer} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		   and is_delete = 0
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+ 	<select id="count" resultType="int">
+		select count(*) from organ_info
+		 <where>
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="companyName != null and companyName != ''"> and company_name = #{companyName} </if>
+		  		  <if test="companyCode != null and companyCode != ''"> and company_code = #{companyCode} </if>
+		  		  <if test="manageType != null and manageType != ''"> and manage_type = #{manageType} </if>
+		  		  <if test="unitType != null and unitType != ''"> and unit_type = #{unitType} </if>
+		  		  <if test="businessUnit != null and businessUnit != ''"> and business_unit = #{businessUnit} </if>
+		  		  <if test="registrationDate != null and registrationDate != ''"> and registration_date = #{registrationDate} </if>
+		  		  <if test="certificateEndTime != null and certificateEndTime != ''"> and certificate_end_time = #{certificateEndTime} </if>
+		  		  <if test="sponsorInformation != null and sponsorInformation != ''"> and sponsor_information = #{sponsorInformation} </if>
+		  		  <if test="egisteredCapital != null and egisteredCapital != ''"> and egistered_capital = #{egisteredCapital} </if>
+		  		  <if test="sourceCapital != null and sourceCapital != ''"> and source_capital = #{sourceCapital} </if>
+		  		  <if test="registeredAddress != null and registeredAddress != ''"> and registered_address = #{registeredAddress} </if>
+		  		  <if test="contactAddress != null and contactAddress != ''"> and contact_address = #{contactAddress} </if>
+		  		  <if test="residentialOccupancy != null and residentialOccupancy != ''"> and residential_occupancy = #{residentialOccupancy} </if>
+		  		  <if test="contactName != null and contactName != ''"> and contact_name = #{contactName} </if>
+		  		  <if test="contactPosition != null and contactPosition != ''"> and contact_position = #{contactPosition} </if>
+		  		  <if test="contactPhone != null and contactPhone != ''"> and contact_phone = #{contactPhone} </if>
+		  		  <if test="contactEmail != null and contactEmail != ''"> and contact_email = #{contactEmail} </if>
+		  		  <if test="contactNumber != null and contactNumber != ''"> and contact_number = #{contactNumber} </if>
+		  		  <if test="contactFax != null and contactFax != ''"> and contact_fax = #{contactFax} </if>
+		  		  <if test="webSiteAddress != null and webSiteAddress != ''"> and web_site_address = #{webSiteAddress} </if>
+		  		  <if test="preparer != null and preparer != ''"> and preparer = #{preparer} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		   and is_delete = 0
+		  		</where>
+	</select>
+
+	<insert id="save" parameterType="com.organization.community.domain.InfoDO" useGeneratedKeys="true" keyProperty="id">
+		insert into organ_info
+		(
+			`company_name`,
+			`company_code`,
+			`manage_type`,
+			`unit_type`,
+			`business_unit`,
+			`registration_date`,
+			`certificate_end_time`,
+			`sponsor_information`,
+			`egistered_capital`,
+			`source_capital`,
+			`registered_address`,
+			`contact_address`,
+			`residential_occupancy`,
+			`contact_name`,
+			`contact_position`,
+			`contact_phone`,
+			`contact_email`,
+			`contact_number`,
+			`contact_fax`,
+			`web_site_address`,
+			`preparer`,
+			`update_time`
+
+		)
+		values
+		(
+			#{companyName},
+			#{companyCode},
+			#{manageType},
+			#{unitType},
+			#{businessUnit},
+			#{registrationDate},
+			#{certificateEndTime},
+			#{sponsorInformation},
+			#{egisteredCapital},
+			#{sourceCapital},
+			#{registeredAddress},
+			#{contactAddress},
+			#{residentialOccupancy},
+			#{contactName},
+			#{contactPosition},
+			#{contactPhone},
+			#{contactEmail},
+			#{contactNumber},
+			#{contactFax},
+			#{webSiteAddress},
+			#{preparer},
+			#{updateTime}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.organization.community.domain.InfoDO">
+		update organ_info
+		<set>
+			<if test="companyName != null">`company_name` = #{companyName}, </if>
+			<if test="companyCode != null">`company_code` = #{companyCode}, </if>
+			<if test="manageType != null">`manage_type` = #{manageType}, </if>
+			<if test="unitType != null">`unit_type` = #{unitType}, </if>
+			<if test="businessUnit != null">`business_unit` = #{businessUnit}, </if>
+			<if test="registrationDate != null">`registration_date` = #{registrationDate}, </if>
+			<if test="certificateEndTime != null">`certificate_end_time` = #{certificateEndTime}, </if>
+			<if test="sponsorInformation != null">`sponsor_information` = #{sponsorInformation}, </if>
+			<if test="egisteredCapital != null">`egistered_capital` = #{egisteredCapital}, </if>
+			<if test="sourceCapital != null">`source_capital` = #{sourceCapital}, </if>
+			<if test="registeredAddress != null">`registered_address` = #{registeredAddress}, </if>
+			<if test="contactAddress != null">`contact_address` = #{contactAddress}, </if>
+			<if test="residentialOccupancy != null">`residential_occupancy` = #{residentialOccupancy}, </if>
+			<if test="contactName != null">`contact_name` = #{contactName}, </if>
+			<if test="contactPosition != null">`contact_position` = #{contactPosition}, </if>
+			<if test="contactPhone != null">`contact_phone` = #{contactPhone}, </if>
+			<if test="contactEmail != null">`contact_email` = #{contactEmail}, </if>
+			<if test="contactNumber != null">`contact_number` = #{contactNumber}, </if>
+			<if test="contactFax != null">`contact_fax` = #{contactFax}, </if>
+			<if test="webSiteAddress != null">`web_site_address` = #{webSiteAddress}, </if>
+			<if test="preparer != null">`preparer` = #{preparer}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="remove">
+		update organ_info set is_delete=0 where id = #{value}
+	</delete>
+
+	<delete id="batchRemove">
+		update organ_info set is_delete=0 where id in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

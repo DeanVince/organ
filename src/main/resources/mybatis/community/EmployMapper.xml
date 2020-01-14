@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.organization.community.dao.EmployDao">
+
+	<select id="get" resultType="com.organization.community.domain.EmployDO">
+		select `id`,`year`,`organ_info_id`,`staff_number`,`full_time_staff_number`,`part_time_staff_number`,`organs_service_number`,`company_number`,`retirement_number`,`else_staff_number`,`below_thirty_number`,`thirtys_number`,`fourtys_number`,`fiftys_number`,`sixtys_number`,`high_school_number`,`college_number`,`degree_number`,`master_number`,`doctor_number`,`studying_abroad_number`,`worker_certificates_number`,`technical_certificates_number`,`party_deputies_number`,`people_deputies_number`,`cppcc_member_number`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_employ where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.organization.community.domain.EmployDO">
+		select `id`,`year`,`organ_info_id`,`staff_number`,`full_time_staff_number`,`part_time_staff_number`,`organs_service_number`,`company_number`,`retirement_number`,`else_staff_number`,`below_thirty_number`,`thirtys_number`,`fourtys_number`,`fiftys_number`,`sixtys_number`,`high_school_number`,`college_number`,`degree_number`,`master_number`,`doctor_number`,`studying_abroad_number`,`worker_certificates_number`,`technical_certificates_number`,`party_deputies_number`,`people_deputies_number`,`cppcc_member_number`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_employ
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="year != null and year != ''"> and year = #{year} </if>
+		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
+		  		  <if test="staffNumber != null and staffNumber != ''"> and staff_number = #{staffNumber} </if>
+		  		  <if test="fullTimeStaffNumber != null and fullTimeStaffNumber != ''"> and full_time_staff_number = #{fullTimeStaffNumber} </if>
+		  		  <if test="partTimeStaffNumber != null and partTimeStaffNumber != ''"> and part_time_staff_number = #{partTimeStaffNumber} </if>
+		  		  <if test="organsServiceNumber != null and organsServiceNumber != ''"> and organs_service_number = #{organsServiceNumber} </if>
+		  		  <if test="companyNumber != null and companyNumber != ''"> and company_number = #{companyNumber} </if>
+		  		  <if test="retirementNumber != null and retirementNumber != ''"> and retirement_number = #{retirementNumber} </if>
+		  		  <if test="elseStaffNumber != null and elseStaffNumber != ''"> and else_staff_number = #{elseStaffNumber} </if>
+		  		  <if test="belowThirtyNumber != null and belowThirtyNumber != ''"> and below_thirty_number = #{belowThirtyNumber} </if>
+		  		  <if test="thirtysNumber != null and thirtysNumber != ''"> and thirtys_number = #{thirtysNumber} </if>
+		  		  <if test="fourtysNumber != null and fourtysNumber != ''"> and fourtys_number = #{fourtysNumber} </if>
+		  		  <if test="fiftysNumber != null and fiftysNumber != ''"> and fiftys_number = #{fiftysNumber} </if>
+		  		  <if test="sixtysNumber != null and sixtysNumber != ''"> and sixtys_number = #{sixtysNumber} </if>
+		  		  <if test="highSchoolNumber != null and highSchoolNumber != ''"> and high_school_number = #{highSchoolNumber} </if>
+		  		  <if test="collegeNumber != null and collegeNumber != ''"> and college_number = #{collegeNumber} </if>
+		  		  <if test="degreeNumber != null and degreeNumber != ''"> and degree_number = #{degreeNumber} </if>
+		  		  <if test="masterNumber != null and masterNumber != ''"> and master_number = #{masterNumber} </if>
+		  		  <if test="doctorNumber != null and doctorNumber != ''"> and doctor_number = #{doctorNumber} </if>
+		  		  <if test="studyingAbroadNumber != null and studyingAbroadNumber != ''"> and studying_abroad_number = #{studyingAbroadNumber} </if>
+		  		  <if test="workerCertificatesNumber != null and workerCertificatesNumber != ''"> and worker_certificates_number = #{workerCertificatesNumber} </if>
+		  		  <if test="technicalCertificatesNumber != null and technicalCertificatesNumber != ''"> and technical_certificates_number = #{technicalCertificatesNumber} </if>
+		  		  <if test="partyDeputiesNumber != null and partyDeputiesNumber != ''"> and party_deputies_number = #{partyDeputiesNumber} </if>
+		  		  <if test="peopleDeputiesNumber != null and peopleDeputiesNumber != ''"> and people_deputies_number = #{peopleDeputiesNumber} </if>
+		  		  <if test="cppccMemberNumber != null and cppccMemberNumber != ''"> and cppcc_member_number = #{cppccMemberNumber} </if>
+		  		  <if test="preparer != null and preparer != ''"> and preparer = #{preparer} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from organ_employ
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="year != null and year != ''"> and year = #{year} </if>
+		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
+		  		  <if test="staffNumber != null and staffNumber != ''"> and staff_number = #{staffNumber} </if>
+		  		  <if test="fullTimeStaffNumber != null and fullTimeStaffNumber != ''"> and full_time_staff_number = #{fullTimeStaffNumber} </if>
+		  		  <if test="partTimeStaffNumber != null and partTimeStaffNumber != ''"> and part_time_staff_number = #{partTimeStaffNumber} </if>
+		  		  <if test="organsServiceNumber != null and organsServiceNumber != ''"> and organs_service_number = #{organsServiceNumber} </if>
+		  		  <if test="companyNumber != null and companyNumber != ''"> and company_number = #{companyNumber} </if>
+		  		  <if test="retirementNumber != null and retirementNumber != ''"> and retirement_number = #{retirementNumber} </if>
+		  		  <if test="elseStaffNumber != null and elseStaffNumber != ''"> and else_staff_number = #{elseStaffNumber} </if>
+		  		  <if test="belowThirtyNumber != null and belowThirtyNumber != ''"> and below_thirty_number = #{belowThirtyNumber} </if>
+		  		  <if test="thirtysNumber != null and thirtysNumber != ''"> and thirtys_number = #{thirtysNumber} </if>
+		  		  <if test="fourtysNumber != null and fourtysNumber != ''"> and fourtys_number = #{fourtysNumber} </if>
+		  		  <if test="fiftysNumber != null and fiftysNumber != ''"> and fiftys_number = #{fiftysNumber} </if>
+		  		  <if test="sixtysNumber != null and sixtysNumber != ''"> and sixtys_number = #{sixtysNumber} </if>
+		  		  <if test="highSchoolNumber != null and highSchoolNumber != ''"> and high_school_number = #{highSchoolNumber} </if>
+		  		  <if test="collegeNumber != null and collegeNumber != ''"> and college_number = #{collegeNumber} </if>
+		  		  <if test="degreeNumber != null and degreeNumber != ''"> and degree_number = #{degreeNumber} </if>
+		  		  <if test="masterNumber != null and masterNumber != ''"> and master_number = #{masterNumber} </if>
+		  		  <if test="doctorNumber != null and doctorNumber != ''"> and doctor_number = #{doctorNumber} </if>
+		  		  <if test="studyingAbroadNumber != null and studyingAbroadNumber != ''"> and studying_abroad_number = #{studyingAbroadNumber} </if>
+		  		  <if test="workerCertificatesNumber != null and workerCertificatesNumber != ''"> and worker_certificates_number = #{workerCertificatesNumber} </if>
+		  		  <if test="technicalCertificatesNumber != null and technicalCertificatesNumber != ''"> and technical_certificates_number = #{technicalCertificatesNumber} </if>
+		  		  <if test="partyDeputiesNumber != null and partyDeputiesNumber != ''"> and party_deputies_number = #{partyDeputiesNumber} </if>
+		  		  <if test="peopleDeputiesNumber != null and peopleDeputiesNumber != ''"> and people_deputies_number = #{peopleDeputiesNumber} </if>
+		  		  <if test="cppccMemberNumber != null and cppccMemberNumber != ''"> and cppcc_member_number = #{cppccMemberNumber} </if>
+		  		  <if test="preparer != null and preparer != ''"> and preparer = #{preparer} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.organization.community.domain.EmployDO" useGeneratedKeys="true" keyProperty="id">
+		insert into organ_employ
+		(
+			`year`, 
+			`organ_info_id`, 
+			`staff_number`, 
+			`full_time_staff_number`, 
+			`part_time_staff_number`, 
+			`organs_service_number`, 
+			`company_number`, 
+			`retirement_number`, 
+			`else_staff_number`, 
+			`below_thirty_number`, 
+			`thirtys_number`, 
+			`fourtys_number`, 
+			`fiftys_number`, 
+			`sixtys_number`, 
+			`high_school_number`, 
+			`college_number`, 
+			`degree_number`, 
+			`master_number`, 
+			`doctor_number`, 
+			`studying_abroad_number`, 
+			`worker_certificates_number`, 
+			`technical_certificates_number`, 
+			`party_deputies_number`, 
+			`people_deputies_number`, 
+			`cppcc_member_number`, 
+			`preparer`, 
+			`create_time`, 
+			`update_time`, 
+			`is_delete`
+		)
+		values
+		(
+			#{year}, 
+			#{organInfoId}, 
+			#{staffNumber}, 
+			#{fullTimeStaffNumber}, 
+			#{partTimeStaffNumber}, 
+			#{organsServiceNumber}, 
+			#{companyNumber}, 
+			#{retirementNumber}, 
+			#{elseStaffNumber}, 
+			#{belowThirtyNumber}, 
+			#{thirtysNumber}, 
+			#{fourtysNumber}, 
+			#{fiftysNumber}, 
+			#{sixtysNumber}, 
+			#{highSchoolNumber}, 
+			#{collegeNumber}, 
+			#{degreeNumber}, 
+			#{masterNumber}, 
+			#{doctorNumber}, 
+			#{studyingAbroadNumber}, 
+			#{workerCertificatesNumber}, 
+			#{technicalCertificatesNumber}, 
+			#{partyDeputiesNumber}, 
+			#{peopleDeputiesNumber}, 
+			#{cppccMemberNumber}, 
+			#{preparer}, 
+			#{createTime}, 
+			#{updateTime}, 
+			#{isDelete}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.organization.community.domain.EmployDO">
+		update organ_employ 
+		<set>
+			<if test="year != null">`year` = #{year}, </if>
+			<if test="organInfoId != null">`organ_info_id` = #{organInfoId}, </if>
+			<if test="staffNumber != null">`staff_number` = #{staffNumber}, </if>
+			<if test="fullTimeStaffNumber != null">`full_time_staff_number` = #{fullTimeStaffNumber}, </if>
+			<if test="partTimeStaffNumber != null">`part_time_staff_number` = #{partTimeStaffNumber}, </if>
+			<if test="organsServiceNumber != null">`organs_service_number` = #{organsServiceNumber}, </if>
+			<if test="companyNumber != null">`company_number` = #{companyNumber}, </if>
+			<if test="retirementNumber != null">`retirement_number` = #{retirementNumber}, </if>
+			<if test="elseStaffNumber != null">`else_staff_number` = #{elseStaffNumber}, </if>
+			<if test="belowThirtyNumber != null">`below_thirty_number` = #{belowThirtyNumber}, </if>
+			<if test="thirtysNumber != null">`thirtys_number` = #{thirtysNumber}, </if>
+			<if test="fourtysNumber != null">`fourtys_number` = #{fourtysNumber}, </if>
+			<if test="fiftysNumber != null">`fiftys_number` = #{fiftysNumber}, </if>
+			<if test="sixtysNumber != null">`sixtys_number` = #{sixtysNumber}, </if>
+			<if test="highSchoolNumber != null">`high_school_number` = #{highSchoolNumber}, </if>
+			<if test="collegeNumber != null">`college_number` = #{collegeNumber}, </if>
+			<if test="degreeNumber != null">`degree_number` = #{degreeNumber}, </if>
+			<if test="masterNumber != null">`master_number` = #{masterNumber}, </if>
+			<if test="doctorNumber != null">`doctor_number` = #{doctorNumber}, </if>
+			<if test="studyingAbroadNumber != null">`studying_abroad_number` = #{studyingAbroadNumber}, </if>
+			<if test="workerCertificatesNumber != null">`worker_certificates_number` = #{workerCertificatesNumber}, </if>
+			<if test="technicalCertificatesNumber != null">`technical_certificates_number` = #{technicalCertificatesNumber}, </if>
+			<if test="partyDeputiesNumber != null">`party_deputies_number` = #{partyDeputiesNumber}, </if>
+			<if test="peopleDeputiesNumber != null">`people_deputies_number` = #{peopleDeputiesNumber}, </if>
+			<if test="cppccMemberNumber != null">`cppcc_member_number` = #{cppccMemberNumber}, </if>
+			<if test="preparer != null">`preparer` = #{preparer}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="isDelete != null">`is_delete` = #{isDelete}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from organ_employ where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from organ_employ where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

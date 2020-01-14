@@ -1,0 +1,82 @@
+<head th:fragment="header(title)" xmlns:th="http://www.w3.org/1999/xhtml">
+	<meta charset="UTF-8">
+	<title th:text="${title}"></title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/plugins/bootstrap-table/bootstrap-table.min.css">
+	<link rel="stylesheet" href="/css/pre/reset.css">
+	<link rel="stylesheet" href="/css/pre/index.css">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+	<script th:inline="javascript">
+        var ctx = /*[[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]]*/;
+	</script>
+</head>
+
+
+<div class="header" th:fragment="top" xmlns:th="http://www.w3.org/1999/xhtml">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-1 hidden-sm hidden-xs">
+				<div class="logo">
+					<img src="/images/logo.png" alt="">
+				</div>
+			</div>
+			<div class="col-xs-8">
+				<div class="sys_name thumbnail">
+					<img src="/images/中文名称.png" alt="">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="welcome pull-right">
+				<div th:if="${user} ne null">
+					<p>欢迎你，<span th:text="${user.name}">李四</span>！<a href="/logout">注销</a></p>
+				</div>
+				<div th:if="${user} eq null">
+					<p><a href="/login">登录</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="footer" th:fragment="footer">
+	<div class="links">
+		<a>联系方式</a>
+		<span>|</span>
+		<a>版权声明</a>
+		<span>|</span>
+		<a>法律声明</a>
+	</div>
+	<p>CopyRight © 2019上海市农业社团组织 All Rights Reserved</p>
+	<p>地址: 上海市长宁区仙霞西路755弄</p>
+	<p>电话：010-****888    京ICP备*******8号</p>
+</div>
+
+
+
+<div th:fragment="nav(active)" xmlns:th="http://www.w3.org/1999/xhtml">
+	<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle" data-toggle="collapse" data-target="#mymenu">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse" id="mymenu">
+			<ul class="nav navbar-nav">
+				<li th:classappend="${active} eq 'index' ?'active':''"><a href="/pre/index">首页</a></li>
+				<li th:classappend="${active} eq 'organization' ?'active':''"><a href="/pre/organization">关于组织</a></li>
+				<li th:classappend="${active} eq 'party' ?'active':''"><a href="/pre/party">党建工作</a></li>
+				<li th:classappend="${active} eq 'info' ?'active':''"><a href="/pre/infomation">信息资料</a></li>
+				<li th:classappend="${active} eq 'announce' ?'active':''"><a href="/pre/announce">行业服务</a></li>
+				<li th:classappend="${active} eq 'manager' ?'active':''"><a href="/pre/manager">行业管理</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
