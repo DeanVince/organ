@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:include="pre/include::header(行业管理)"></head>
+
+<body>
+    <div class="header" th:include="/pre/include::top"></div>
+
+    <div class="navbar navbar-inverse navbar-static-top" th:include="/pre/include::nav(manager)"></div>
+
+
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="now_postion">
+                    <span>你当前所在的位置：</span><span><a href="/pre/index">首页</a></span><span> &gt; </span><span><a
+                        href="/pre/manager">行业管理</a></span><span> &gt; </span><span>新闻</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="news_page_detail col-md-offset-1 col-md-10">
+                    <div th:object="${newsDO}">
+                        <div class="title">
+                            <h3 th:text="*{title}"></h3>
+                        </div>
+                        <div class="author_info">
+                            <span th:text="作者：    + *{author}"></span> |
+                            <span th:text="*{#dates.format(publicTime, 'yyyy-MM-dd')}"></span>
+                        </div>
+
+                        <div class="content" th:utext="*{content}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer" th:include="pre/include::footer"></div>
+
+
+</body>
+</html>

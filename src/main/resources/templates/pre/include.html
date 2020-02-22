@@ -32,7 +32,7 @@
 		<div class="row">
 			<div class="welcome pull-right">
 				<div th:if="${user} ne null">
-					<p>欢迎你，<span th:text="${user.name}">李四</span>！<a href="/logout">注销</a></p>
+					<p>欢迎<span th:text="${user.name}"></span><a href="/index" target="view_window">后台管理</a> | <a href="/logout">注销</a></p>
 				</div>
 				<div th:if="${user} eq null">
 					<p><a href="/login">登录</a></p>

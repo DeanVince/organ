@@ -1,6 +1,6 @@
 bootdo:
   uploadPath: /var/uploaded_files/
-  username: test
+  username: admin
   password: 111111
 logging:
   level:
@@ -10,9 +10,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://122.51.199.211:3506/organization?useUnicode=true&characterEncoding=utf8
-    username: root
-    password: xihuan1987
+    url: jdbc:mysql://122.51.199.211:3306/organ?useUnicode=true&characterEncoding=utf8
+    username: organ
+    password: organ
     initialSize: 1
     minIdle: 3
     maxActive: 20

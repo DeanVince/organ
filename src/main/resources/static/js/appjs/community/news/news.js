@@ -4,6 +4,10 @@ $(function() {
 	load();
 });
 
+
+function preview(id) {
+    window.open("/pre/news/"+id);
+}
 function load() {
 	$('#exampleTable')
 			.bootstrapTable(
@@ -56,7 +60,7 @@ function load() {
 									title : '标题',
 									width :320,
 									formatter:function (value,row,index) {
-										return '<a href="#" onclick="preview(\''+ row.cid+ '\')">'+row.title+'</a>';
+										return '<a href="#" onclick="preview(\''+ row.id+ '\')">'+row.title+'</a>';
 									}
 								},
 																{
@@ -90,7 +94,6 @@ function load() {
 									title : '是否允许评论',
 									align : 'center',
 									formatter : function(value, row, index) {
-										console.log(row)
 										if (value == '0') {
 											return '<span class="label label-danger">否</span>';
 										} else if (value == '1') {

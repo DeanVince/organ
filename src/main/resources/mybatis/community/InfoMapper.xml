@@ -11,7 +11,7 @@
 		select `id`,`company_name`,`company_code`,`manage_type`,`unit_type`,`business_unit`,`registration_date`,`certificate_end_time`,`sponsor_information`,`egistered_capital`,`source_capital`,`registered_address`,`contact_address`,`residential_occupancy`,`contact_name`,`contact_position`,`contact_phone`,`contact_email`,`contact_number`,`contact_fax`,`web_site_address`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_info
         <where>
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="companyName != null and companyName != ''"> and company_name = #{companyName} </if>
+		  		  <if test="companyName != null and companyName != ''"> and company_name like '%${companyName}%' </if>
 		  		  <if test="companyCode != null and companyCode != ''"> and company_code = #{companyCode} </if>
 		  		  <if test="manageType != null and manageType != ''"> and manage_type = #{manageType} </if>
 		  		  <if test="unitType != null and unitType != ''"> and unit_type = #{unitType} </if>

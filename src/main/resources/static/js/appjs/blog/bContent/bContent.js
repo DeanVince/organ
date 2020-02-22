@@ -90,7 +90,7 @@ function load() {
 									field : 'content',
 									title : '内容'
 								},
-								
+
 								{
 									visible : false,
 									field : 'type',
@@ -232,7 +232,7 @@ function remove(id) {
 }
 
 function preview(id) {
-	window.open("/blog/open/post/"+id);   
+	window.open("/blog/open/post/"+id);
 	//window.location.href="/blog/open/post/"+id;
 }
 function batchRemove() {

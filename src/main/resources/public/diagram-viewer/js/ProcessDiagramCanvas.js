@@ -1878,10 +1878,10 @@ ProcessDiagramCanvas.prototype = {
 		}
 
 		var contextObject = shape.data("contextObject");
-		if (contextObject)
-			console.log("--> highLightActivity: ["+contextObject.getProperty("type")+"], activityId: " + contextObject.getId());
-		else
-			console.log("--> highLightActivity: ", shape, shape.data("contextObject"));
+		// if (contextObject)
+		// 	console.log("--> highLightActivity: ["+contextObject.getProperty("type")+"], activityId: " + contextObject.getId());
+		// else
+		// 	console.log("--> highLightActivity: ", shape, shape.data("contextObject"));
 
 		shape.attr("stroke-width", THICK_TASK_BORDER_STROKE);
 		shape.attr("stroke", HIGHLIGHT_COLOR);

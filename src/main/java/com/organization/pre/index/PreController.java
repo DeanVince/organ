@@ -73,7 +73,7 @@ public class PreController extends BaseController {
 
     @GetMapping("announce")
     String announce(Model model) {
-        putList(model,"通知公告");
+        putList(model,"行业服务");
         return "pre/announce";
     }
 
@@ -82,6 +82,8 @@ public class PreController extends BaseController {
         putList(model,"政策法规");
         return "pre/manager";
     }
+
+
 
     private void putList(Model model,String type) {
         Map<String, Object> params = new HashMap();

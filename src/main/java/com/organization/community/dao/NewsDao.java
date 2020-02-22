@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * 社团新闻表
@@ -19,6 +20,8 @@ public interface NewsDao {
 	NewsDO get(Integer id);
 
 	List<NewsDO> list(Map<String, Object> map);
+
+	List<NewsDO> preList(Map<String, Object> map);
 
 	int count(Map<String, Object> map);
 

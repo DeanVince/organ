@@ -36,6 +36,26 @@
 		</if>
 	</select>
 
+	<select id="preList" resultType="com.organization.community.domain.NewsDO">
+		select `id`,`title`,`author`,`content`,`public_time`,`tags`,`news_type`,`status`,`allow_comment`,`allow_evaluation_star`,`update_time` from organ_news
+		where news_type in
+			<foreach collection="typeList" item="type" index="index" open="(" close=")" separator=",">
+				#{type}
+			</foreach>
+			and is_delete = 0
+		<choose>
+			<when test="sort != null and sort.trim() != ''">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by id desc
+			</otherwise>
+		</choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
  	<select id="count" resultType="int">
 		select count(*) from organ_news
 		 <where>

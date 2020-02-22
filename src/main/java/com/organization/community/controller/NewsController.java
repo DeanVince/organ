@@ -24,7 +24,6 @@ import com.organization.common.utils.R;
  * 社团新闻表
  *
  * @author vince
- * @email 1992lcg@163.com
  * @date 2020-01-12 18:39:42
  */
 
@@ -42,13 +41,13 @@ public class NewsController {
 
 	@ResponseBody
 	@GetMapping("/list")
-//	@RequiresPermissions("community:news:news")
 	public PageUtils list(@RequestParam Map<String, Object> params){
 		//查询列表数据
         Query query = new Query(params);
 		List<NewsDO> newsList = newsService.list(query);
 		int total = newsService.count(query);
-		PageUtils pageUtils = new PageUtils(newsList, total);
+		PageUtils pageUtils;
+		pageUtils = new PageUtils(newsList, total);
 		return pageUtils;
 	}
 

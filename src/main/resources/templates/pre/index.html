@@ -35,7 +35,7 @@
                                     <li th:each="news,state : ${announmentList}">
                                         <div class="">
                                             <div class="title">
-                                                <a href="#" th:text="${news.title}">关于农业社团组织的2022新规</a>
+                                                <a th:href="@{'/pre/news/'+${news.id}}" th:text="${news.title}"></a>
                                             </div>
                                             <span class="pull-right" th:text="${#dates.format(news.publicTime, 'yyyy-MM-dd')}">2020-01-01</span>
                                         </div>
@@ -67,7 +67,7 @@
                                 <li>
                                     <div class="">
                                         <div class="title-small">
-                                            <a href="#" th:text="${news.title}">关于农业社团组织的2022新规</a>
+                                            <a th:href="@{'/pre/news/'+${news.id}}" th:text="${news.title}">关于农业社团组织的2022新规</a>
                                         </div>
                                         <span class="pull-right" th:text="${#dates.format(news.publicTime, 'yyyy-MM-dd')}">2020-01-01</span>
                                     </div>
@@ -164,7 +164,7 @@
                                 <li>
                                     <div class="">
                                         <div class="title-small">
-                                            <a href="#" th:text="${news.title}">关于农业社团组织的2022新规</a>
+                                            <a th:href="@{'/pre/news/'+${news.id}}" th:text="${news.title}">关于农业社团组织的2022新规</a>
                                         </div>
                                         <span class="pull-right" th:text="${#dates.format(news.publicTime, 'yyyy-MM-dd')}">2020-01-01</span>
                                     </div>
@@ -186,7 +186,7 @@
                                 <li>
                                     <div class="">
                                         <div class="title-small">
-                                            <a href="#" th:text="${news.title}">关于农业社团组织的2022新规</a>
+                                            <a th:href="@{'/pre/news/'+${news.id}}" th:text="${news.title}">关于农业社团组织的2022新规</a>
                                         </div>
                                         <span class="pull-right" th:text="${#dates.format(news.publicTime, 'yyyy-MM-dd')}">2020-01-01</span>
                                     </div>
@@ -208,7 +208,7 @@
                                 <li>
                                     <div class="">
                                         <div class="title-small">
-                                            <a href="#" th:text="${news.title}">关于农业社团组织的2022新规</a>
+                                            <a th:href="@{'/pre/news/'+${news.id}}" th:text="${news.title}">关于农业社团组织的2022新规</a>
                                         </div>
                                         <span class="pull-right" th:text="${#dates.format(news.publicTime, 'yyyy-MM-dd')}">2020-01-01</span>
                                     </div>

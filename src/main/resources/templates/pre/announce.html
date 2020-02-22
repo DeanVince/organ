@@ -11,18 +11,18 @@
         <div class="container">
             <div class="row">
                 <div class="now_postion">
-                    <span>你当前所在的位置：</span><span>首页</span><span> &gt; </span><span>行业服务</span>
+                    <span>你当前所在的位置：</span><span><a href="/pre/index">首页</a></span><span> &gt; </span><span>行业服务</span>
                 </div>
             </div>
             <div class="row">
-                <div class="news_list">
+                <div class="news_list col-md-10 col-md-offset-1">
                     <ul >
                         <li th:each="news,state : ${list}">
                             <div class="col-sm-2">
-                                <span>【行业服务】</span>
+                                <span th:text="【+${news.newsType}+】">【行业服务】</span>
                             </div>
                             <div class="col-sm-8">
-                                <a href="" th:text="${news.title}">2019年年终工作回报</a>
+                                <a th:href="@{'/pre/news/'+${news.id}}" th:text="${news.title}">2019年年终工作回报</a>
                             </div>
                             <div class="col-sm-2">
                                 <span class="pull-right" th:text="${#dates.format(news.publicTime, 'yyyy-MM-dd')}">2019-12-04</span>

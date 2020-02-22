@@ -232,9 +232,28 @@
 
 .news_list{
     min-height: 300px;
+
 }
 
 .news_list li{
     margin: 10px;
-    font: 20px/40px 'Microsoft YaHei';
+    font: 16px/40px 'Microsoft YaHei';
+}
+
+.news_page_detail .title{
+    font: 28px/40px 'microsoft yahei';
+    text-align: center;
+    margin: 30px auto 20px;
+}
+
+.news_page_detail .author_info{
+    text-align: center;
+    margin: 20px;
+}
+.news_page_detail .content{
+    margin: 10px 5%;
+}
+
+.news_page_detail .content p{
+    line-height: 30px;
 }

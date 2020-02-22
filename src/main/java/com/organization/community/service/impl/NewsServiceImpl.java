@@ -3,6 +3,7 @@ package com.organization.community.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -23,8 +24,20 @@ public class NewsServiceImpl implements NewsService {
 		return newsDao.get(id);
 	}
 
+
 	@Override
 	public List<NewsDO> list(Map<String, Object> map){
+		if(map.containsKey("newsType")){
+			if("行业服务".equals(map.get("newsType"))){
+				List<String> list = new ArrayList<>(3);
+				list.add("通知公告");
+				list.add("组织风采");
+				list.add("评选推荐");
+				map.remove("newsType");
+				map.put("typeList", list);
+				return newsDao.preList(map);
+			}
+		}
 		return newsDao.list(map);
 	}
 
