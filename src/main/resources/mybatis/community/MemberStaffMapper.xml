@@ -9,7 +9,7 @@
 
 	<select id="list" resultType="com.organization.community.domain.MemberStaffDO">
 		select `id`,`year`,`organ_info_id`,`unit_member_number`,`individual_member_number`,`start_date`,`term_time`,`director_number`,`standing_director_number`,`supervisor_number`,`secretariat_number`,`branches_number`,`representative_number`,`mechanisms_number`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_member_staff
-        <where>  
+        <where>
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="year != null and year != ''"> and year = #{year} </if>
 		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
@@ -41,10 +41,10 @@
 			limit #{offset}, #{limit}
 		</if>
 	</select>
-	
+
  	<select id="count" resultType="int">
 		select count(*) from organ_member_staff
-		 <where>  
+		 <where>
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="year != null and year != ''"> and year = #{year} </if>
 		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
@@ -65,52 +65,52 @@
 		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
 		  		</where>
 	</select>
-	 
+
 	<insert id="save" parameterType="com.organization.community.domain.MemberStaffDO" useGeneratedKeys="true" keyProperty="id">
 		insert into organ_member_staff
 		(
-			`year`, 
-			`organ_info_id`, 
-			`unit_member_number`, 
-			`individual_member_number`, 
-			`start_date`, 
-			`term_time`, 
-			`director_number`, 
-			`standing_director_number`, 
-			`supervisor_number`, 
-			`secretariat_number`, 
-			`branches_number`, 
-			`representative_number`, 
-			`mechanisms_number`, 
-			`preparer`, 
-			`create_time`, 
-			`update_time`, 
+			`year`,
+			`organ_info_id`,
+			`unit_member_number`,
+			`individual_member_number`,
+			`start_date`,
+			`term_time`,
+			`director_number`,
+			`standing_director_number`,
+			`supervisor_number`,
+			`secretariat_number`,
+			`branches_number`,
+			`representative_number`,
+			`mechanisms_number`,
+			`preparer`,
+			`create_time`,
+			`update_time`,
 			`is_delete`
 		)
 		values
 		(
-			#{year}, 
-			#{organInfoId}, 
-			#{unitMemberNumber}, 
-			#{individualMemberNumber}, 
-			#{startDate}, 
-			#{termTime}, 
-			#{directorNumber}, 
-			#{standingDirectorNumber}, 
-			#{supervisorNumber}, 
-			#{secretariatNumber}, 
-			#{branchesNumber}, 
-			#{representativeNumber}, 
-			#{mechanismsNumber}, 
-			#{preparer}, 
-			#{createTime}, 
-			#{updateTime}, 
+			#{year},
+			#{organInfoId},
+			#{unitMemberNumber},
+			#{individualMemberNumber},
+			#{startDate},
+			#{termTime},
+			#{directorNumber},
+			#{standingDirectorNumber},
+			#{supervisorNumber},
+			#{secretariatNumber},
+			#{branchesNumber},
+			#{representativeNumber},
+			#{mechanismsNumber},
+			#{preparer},
+			#{createTime},
+			#{updateTime},
 			#{isDelete}
 		)
 	</insert>
-	 
+
 	<update id="update" parameterType="com.organization.community.domain.MemberStaffDO">
-		update organ_member_staff 
+		update organ_member_staff
 		<set>
 			<if test="year != null">`year` = #{year}, </if>
 			<if test="organInfoId != null">`organ_info_id` = #{organInfoId}, </if>
@@ -132,13 +132,13 @@
 		</set>
 		where id = #{id}
 	</update>
-	
+
 	<delete id="remove">
 		delete from organ_member_staff where id = #{value}
 	</delete>
-	
+
 	<delete id="batchRemove">
-		delete from organ_member_staff where id in 
+		delete from organ_member_staff where id in
 		<foreach item="id" collection="array" open="(" separator="," close=")">
 			#{id}
 		</foreach>

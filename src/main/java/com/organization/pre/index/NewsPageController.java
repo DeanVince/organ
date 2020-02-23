@@ -1,5 +1,6 @@
 package com.organization.pre.index;
 
+import com.organization.common.controller.BaseController;
 import com.organization.community.domain.NewsDO;
 import com.organization.community.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("pre")
-public class NewsPageController {
+public class NewsPageController extends BaseController {
 
     @Autowired
     private NewsService newsService;
@@ -26,6 +27,8 @@ public class NewsPageController {
         NewsDO newsDO = newsService.get(id);
         String type = type(newsDO.getNewsType());
         model.addAttribute("newsDO",newsDO);
+        model.addAttribute("user",getUser());
+
         return "pre/news/"+type;
     }
 

@@ -76,67 +76,6 @@
 
         $(function () {
             load();
-
-            //   function queryParams(params) {
-          //     var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-          //        // limit: params.limit,   //页面大小
-          //         offset: params.offset,  //页码
-          //         pageSize:this.pageSize,
-          //         pageNumber:this.pageNumber,
-          //         sortName: params.sortName,
-          //         sortOrder: params.sortOrder,
-          //         projectId: $("#projectId").val(),
-          //         requirement_Id:$("#requirement_Id").val(),
-          //         length: 6
-          //     };
-          //     return temp;
-          // };
-          //
-          //   var _table = $("#boot-table");
-          //   _table.bootstrapTable({
-          //       url: ctx + '/community/info/list',
-          //       pagination: true,
-          //       border: false,
-          //       pageList: [10, 20, 50, 100],
-          //       queryParams: queryParams,
-          //       columns : [
-          //           {
-          //               checkbox : true
-          //           },
-          //           {
-          //               field : 'id',
-          //               title : '主键'
-          //           },
-          //           {
-          //               field : 'companyName',
-          //               title : '单位名称'
-          //           },
-          //           {
-          //               field : 'companyCode',
-          //               title : '统一社会信用代码'
-          //           },
-          //           {
-          //               field : 'unitType',
-          //               title : '社团类型'
-          //           },
-          //           {
-          //               title : '操作',
-          //               field : 'id',
-          //               align : 'center',
-          //               formatter : function(value, row, index) {
-          //                   var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
-          //                       + row.id
-          //                       + '\')"><i class="fa fa-edit"></i></a> ';
-          //                   var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
-          //                       + row.id
-          //                       + '\')"><i class="fa fa-remove"></i></a> ';
-          //                   var f = '<a class="btn btn-success btn-sm" href="#" title="备用"  mce_href="#" onclick="resetPwd(\''
-          //                       + row.id
-          //                       + '\')"><i class="fa fa-key"></i></a> ';
-          //                   return e + d ;
-          //               }
-          //           } ]
-          //   })
         })
         function load() {
             $('#boot-table')
@@ -179,6 +118,13 @@
                         // 返回false将会终止请求
                         columns : [
                             {
+                              title : '#',
+                              align : 'center',
+                              formatter : function (value, row, index) {
+                                    return index + 1;
+                              }
+                            },
+                            {
                                 field : 'companyName',
                                 title : '单位名称'
                             },
@@ -197,7 +143,17 @@
                             {
                                 field : 'businessUnit',
                                 title : '业务主管单位'
-                            }]
+                            },
+                            {
+                                title : '操作',
+                                field : 'id',
+                                align : 'center',
+                                formatter : function(value, row, index) {
+                                    var e = '<a class="btn btn-primary btn-sm" href="/pre/organ/basic/'+value+'" mce_href="#" title="查看" >查看详情</a>'
+                                    return e  ;
+                                }
+                              }
+                            ]
                     });
         }
     </script>

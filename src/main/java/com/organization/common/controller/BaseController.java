@@ -6,7 +6,7 @@ import com.organization.system.domain.UserDO;
 
 @Controller
 public class BaseController {
-	public UserDO getUser() {
+	public  UserDO getUser() {
 		return ShiroUtils.getUser();
 	}
 

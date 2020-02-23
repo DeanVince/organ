@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:include="pre/include::header(组织机构人员情况)"></head>
+<body>
+<div class="header" th:include="/pre/include::top"></div>
+
+<div class="navbar navbar-inverse navbar-static-top" th:include="/pre/include::nav(organization)"></div>
+
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="now_postion">
+                <span>你当前所在的位置：</span><span><a href="/pre/index">首页</a></span><span> &gt; </span>
+                <span><a href="/pre/organization">机构概况</a></span><span> &gt; </span><span>人员情况</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="component">
+                <div class="component_header">
+                    <div class="title">
+                        <h3>机构概况</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="component_body">
+                        <div class="organ_tree col-md-3">
+                            <h3 class="title" th:text="${infoDo.companyName}">上海市农业旅游协会</h3>
+                            <ul class="tree">
+                                <li><a th:href="@{'/pre/organ/basic/'+${infoDo.id}}">基本信息</a></li>
+                                <li><a th:href="@{'/pre/organ/memberstaff/'+${infoDo.id}}">会员和机构设置情况</a></li>
+                                <li   class="active"><a th:href="@{'/pre/organ/employee/'+${infoDo.id}}">人员情况</a></li>
+                                <li><a th:href="@{'/pre/organ/director/'+${infoDo.id}}">理事信息</a></li>
+                                <li><a th:href="@{'/pre/organ/member/'+${infoDo.id}}">协会会员信息</a></li>
+                                <li><a th:href="@{'/pre/organ/party/'+${infoDo.id}}">党建情况</a></li>
+                            </ul>
+                        </div>
+                        <div class="info_detail col-md-9">
+                            <table class="table table-striped" th:object="${employDO}">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>名称</th>
+                                    <th>内容</th>
+                                    <th>备注</th>
+                                </tr>
+                                </thead>
+                                <tbody >
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>工作人员总数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{staffNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>专职人员人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{fullTimeStaffNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>兼职人员人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{partTimeStaffNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>国家机关在职人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{organsServiceNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>企事业单位人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{companyNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>离退休返聘人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{retirementNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>其他人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{elseStaffNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>30岁及以下人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{belowThirtyNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">9</th>
+                                    <td>30-40岁人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{thirtysNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">10</th>
+                                    <td>40-50岁人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{fourtysNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">11</th>
+                                    <td>50-60岁人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{fiftysNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">12</th>
+                                    <td>60岁以上人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{sixtysNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">13</th>
+                                    <td>高中及以下人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{highSchoolNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">14</th>
+                                    <td>大专人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{collegeNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">15</th>
+                                    <td>本科人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{degreeNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">16</th>
+                                    <td>硕士人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{masterNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">17</th>
+                                    <td>博士人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{doctorNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">18</th>
+                                    <td>出国留学人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{studyingAbroadNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">19</th>
+                                    <td>持有社会工作者资格证书人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{workerCertificatesNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">20</th>
+                                    <td>持有从事岗位相应专业技术证书人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{technicalCertificatesNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                <tr>
+                                    <th scope="row">21</th>
+                                    <td>党代表人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{partyDeputiesNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">22</th>
+                                    <td>人大代表人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{peopleDeputiesNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">23</th>
+                                    <td>政协委员人数</td>
+                                    <td><span th:if="${employDO !=null}" th:text="*{cppccMemberNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer" th:include="pre/include::footer"></div>
+
+
+</body>
+</html>

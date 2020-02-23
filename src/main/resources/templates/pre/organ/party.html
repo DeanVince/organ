@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:include="pre/include::header(组织机构人员情况)"></head>
+<body>
+<div class="header" th:include="/pre/include::top"></div>
+
+<div class="navbar navbar-inverse navbar-static-top" th:include="/pre/include::nav(organization)"></div>
+
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="now_postion">
+                <span>你当前所在的位置：</span><span><a href="/pre/index">首页</a></span><span> &gt; </span>
+                <span><a href="/pre/organization">机构概况</a></span><span> &gt; </span><span>党建情况</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="component">
+                <div class="component_header">
+                    <div class="title">
+                        <h3>机构概况</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="component_body">
+                        <div class="organ_tree col-md-3">
+                            <h3 class="title" th:text="${infoDo.companyName}">上海市农业旅游协会</h3>
+                            <ul class="tree">
+                                <li><a th:href="@{'/pre/organ/basic/'+${infoDo.id}}">基本信息</a></li>
+                                <li><a th:href="@{'/pre/organ/memberstaff/'+${infoDo.id}}">会员和机构设置情况</a></li>
+                                <li><a th:href="@{'/pre/organ/employee/'+${infoDo.id}}">人员情况</a></li>
+                                <li><a th:href="@{'/pre/organ/director/'+${infoDo.id}}">理事信息</a></li>
+                                <li><a th:href="@{'/pre/organ/member/'+${infoDo.id}}">协会会员信息</a></li>
+                                <li  class="active"><a th:href="@{'/pre/organ/party/'+${infoDo.id}}">党建情况</a></li>
+                            </ul>
+                        </div>
+                        <div class="info_detail col-md-9">
+                            <table class="table table-striped" th:object="${partyInfoDO}">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>名称</th>
+                                    <th>内容</th>
+                                    <th>备注</th>
+                                </tr>
+                                </thead>
+                                <tbody >
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>工作人员中党员总数</td>
+                                    <td><span th:if="${partyInfoDO !=null}" th:text="*{partyMembersNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>专职人员党员数</td>
+                                    <td><span th:if="${partyInfoDO !=null}" th:text="*{fullTimePartyMembersNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>党组织关第在本社会组织的党员数</td>
+                                    <td><span th:if="${partyInfoDO !=null}" th:text="*{organizationNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>本年新发展新党员人数</td>
+                                    <td><span th:if="${partyInfoDO !=null}" th:text="*{thisYearAddNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>党建形式</td>
+                                    <td><span th:if="${partyInfoDO !=null}" th:text="*{partyType}"></span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>党组织（党建联络员）隶属关系</td>
+                                    <td><span th:if="${partyInfoDO !=null}" th:text="*{partyRelationship}"></span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>党组建负责人（党建联络员）</td>
+                                    <td><span th:if="${partyInfoDO !=null}" th:text="*{partyBuildingLiaison}"></span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>共青团员人数量</td>
+                                    <td><span th:if="${partyInfoDO !=null}" th:text="*{leagueOrganizationNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">9</th>
+                                    <td>工会成员数量</td>
+                                    <td><span th:if="${partyInfoDO !=null}" th:text="*{tradeUnionNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer" th:include="pre/include::footer"></div>
+
+
+</body>
+</html>

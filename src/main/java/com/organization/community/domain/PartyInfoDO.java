@@ -7,14 +7,14 @@ import java.util.Date;
 
 /**
  * 协会党建情况表
- * 
+ *
  * @author vince
  * @email 1992lcg@163.com
  * @date 2020-01-12 18:39:43
  */
 public class PartyInfoDO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	//主键
 	private Integer id;
 	//年份
@@ -25,7 +25,7 @@ public class PartyInfoDO implements Serializable {
 	private Integer partyMembersNumber;
 	//专职人员党员数
 	private Integer fullTimePartyMembersNumber;
-	//党组织关第在本社会组织的党员数	social
+	//党组织关第在本社会组织的党员数
 	private Integer organizationNumber;
 	//本年新发展新党员人数
 	private Integer thisYearAddNumber;

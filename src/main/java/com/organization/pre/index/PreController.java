@@ -52,7 +52,8 @@ public class PreController extends BaseController {
     }
 
     @GetMapping("organization")
-    String organization() {
+    String organization(Model model) {
+        model.addAttribute("user",getUser());
         return "pre/organization";
     }
 

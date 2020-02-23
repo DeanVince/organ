@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:include="pre/include::header(组织机构人员情况)"></head>
+<body>
+<div class="header" th:include="/pre/include::top"></div>
+
+<div class="navbar navbar-inverse navbar-static-top" th:include="/pre/include::nav(organization)"></div>
+
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="now_postion">
+                <span>你当前所在的位置：</span><span><a href="/pre/index">首页</a></span><span> &gt; </span>
+                <span><a href="/pre/organization">机构概况</a></span><span> &gt; </span><span>会员和机构设置情况</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="component">
+                <div class="component_header">
+                    <div class="title">
+                        <h3>机构概况</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="component_body">
+                        <div class="organ_tree col-md-3">
+                            <h3 class="title" th:text="${infoDo.companyName}">上海市农业旅游协会</h3>
+                            <ul class="tree">
+                                <li><a th:href="@{'/pre/organ/basic/'+${infoDo.id}}">基本信息</a></li>
+                                <li class="active"><a th:href="@{'/pre/organ/memberstaff/'+${infoDo.id}}">会员和机构设置情况</a></li>
+                                <li><a th:href="@{'/pre/organ/employee/'+${infoDo.id}}">人员情况</a></li>
+                                <li><a th:href="@{'/pre/organ/director/'+${infoDo.id}}">理事信息</a></li>
+                                <li><a th:href="@{'/pre/organ/member/'+${infoDo.id}}">协会会员信息</a></li>
+                                <li><a th:href="@{'/pre/organ/party/'+${infoDo.id}}">党建情况</a></li>
+                            </ul>
+                        </div>
+                        <div class="info_detail col-md-9">
+                            <table class="table table-striped" th:object="${memberStaffDO}">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>名称</th>
+                                    <th>内容</th>
+                                    <th>备注</th>
+                                </tr>
+                                </thead>
+                                <tbody >
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>单位会员数</td>
+                                    <td><span th:if="${memberStaffDO !=null}" th:text="*{unitMemberNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>个人会员数</td>
+                                    <td><span th:if="${memberStaffDO !=null}" th:text="*{individualMemberNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>起始日期</td>
+                                    <td><span th:if="${memberStaffDO !=null}" th:text="*{#dates.format(startDate, 'yyyy-MM-dd')}"></span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>任期</td>
+                                    <td><span th:if="${memberStaffDO !=null}" th:text="*{termTime}"></span><span> 年</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>理事人数</td>
+                                    <td><span th:if="${memberStaffDO !=null}" th:text="*{directorNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>常务理事人数</td>
+                                    <td><span th:if="${memberStaffDO !=null}" th:text="*{standingDirectorNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>监事会监事人数</td>
+                                    <td><span th:if="${memberStaffDO !=null}" th:text="*{supervisorNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>秘书处工作人员数</td>
+                                    <td><span th:if="${memberStaffDO !=null}" th:text="*{secretariatNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">9</th>
+                                    <td>分支机构数</td>
+                                    <td><span th:if="${memberStaffDO !=null}" th:text="*{branchesNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">10</th>
+                                    <td>代表机构数</td>
+                                    <td><span th:if="${memberStaffDO !=null}" th:text="*{representativeNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">11</th>
+                                    <td>实体机构数</td>
+                                    <td><span th:if="${memberStaffDO !=null}" th:text="*{mechanismsNumber}"></span><span> 人</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer" th:include="pre/include::footer"></div>
+
+</body>
+</html>
