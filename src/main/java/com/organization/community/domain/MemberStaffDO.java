@@ -7,14 +7,14 @@ import java.util.Date;
 
 /**
  * 会员机构人数情况表
- * 
+ *
  * @author vince
  * @email 1992lcg@163.com
  * @date 2020-01-12 18:39:42
  */
 public class MemberStaffDO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	//主键
 	private Integer id;
 	//年份
@@ -49,6 +49,8 @@ public class MemberStaffDO implements Serializable {
 	private Date createTime;
 	//更改日期
 	private Date updateTime;
+	//单位名称
+	private String companyName;
 	//删除标记
 	private Boolean isDelete;
 
@@ -255,6 +257,14 @@ public class MemberStaffDO implements Serializable {
 	 */
 	public Date getUpdateTime() {
 		return updateTime;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 	/**
 	 * 设置：删除标记

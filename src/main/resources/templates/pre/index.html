@@ -8,9 +8,9 @@
 
 </script>
 <body>
-    <div class="header" th:include="/pre/include::top"></div>
+    <div class="header" th:include="pre/include::top"></div>
 
-    <div class="navbar navbar-inverse navbar-static-top" th:include="/pre/include::nav(index)"></div>
+    <div class="navbar navbar-inverse navbar-static-top" th:include="pre/include::nav(index)"></div>
 
 
     <div class="content">
@@ -28,7 +28,7 @@
                                 <div class="title">
                                     <h3>通知公告</h3>
                                 </div>
-                                <a href="#" class="more"></a>
+                                <a href="/pre/announce" class="more"></a>
                             </div>
                             <div class="news component_body">
                                 <ul >
@@ -60,7 +60,7 @@
                             <div class="title">
                                 <h3>组织风采</h3>
                             </div>
-                            <a href="#" class="more"></a>
+                            <a href="/pre/announce" class="more"></a>
                         </div>
                         <div class="news component_body">
                             <ul th:each="news,state : ${activityList}">
@@ -82,54 +82,16 @@
                             <div class="title">
                                 <h3>机构概况</h3>
                             </div>
-                            <a href="organization.html" class="more"></a>
+                            <a href="/pre/organization" class="more"></a>
                         </div>
                         <div class="news component_body">
-                            <ul>
+                            <ul th:each="comun : ${comulist}">
                                 <li>
                                     <div class="">
-                                        <a href="#">上海农业旅游经济协会</a>
-                                        <span class="pull-right">查看</span>
+                                        <a th:href="@{'/pre/organ/basic/'+${comun.id}}" th:text="${comun.companyName}">上海农业旅游经济协会</a>
+                                        <span class="pull-right"><a th:href="@{'/pre/organ/basic/'+${comun.id}}">查看</a></span>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="">
-                                        <a href="#">上海农业旅游经济协会</a>
-                                        <span class="pull-right">查看</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="">
-                                        <a href="#">上海农业旅游经济协会</a>
-                                        <span class="pull-right">查看</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="">
-                                        <a href="#">上海农业旅游经济协会</a>
-                                        <span class="pull-right">查看</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="">
-                                        <a href="#">上海农业旅游经济协会</a>
-                                        <span class="pull-right">查看</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="">
-                                        <a href="#">上海农业旅游经济协会</a>
-                                        <span class="pull-right">查看</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="">
-                                        <a href="#">上海农业旅游经济协会</a>
-                                        <span class="pull-right">查看</span>
-                                    </div>
-                                </li>
-
-
                             </ul>
                         </div>
                     </div>
@@ -157,7 +119,7 @@
                             <div class="title">
                                 <h3>评选推荐</h3>
                             </div>
-                            <a href="#" class="more"></a>
+                            <a href="/pre/announce" class="more"></a>
                         </div>
                         <div class="news component_body">
                             <ul th:each="news,state : ${recommend}">
@@ -179,7 +141,7 @@
                             <div class="title">
                                 <h3>党建工作</h3>
                             </div>
-                            <a href="#" class="more"></a>
+                            <a href="/pre/party" class="more"></a>
                         </div>
                         <div class="news component_body">
                             <ul th:each="news,state : ${partyList}">
@@ -201,7 +163,7 @@
                             <div class="title">
                                 <h3>政策法规</h3>
                             </div>
-                            <a href="#" class="more"></a>
+                            <a href="/pre/manager" class="more"></a>
                         </div>
                         <div class="news component_body">
                             <ul th:each="news,state : ${policiesList}">

@@ -4,12 +4,13 @@
 <mapper namespace="com.organization.community.dao.MemberInfomationDao">
 
 	<select id="get" resultType="com.organization.community.domain.MemberInfomationDO">
-		select `id`,`year`,`organ_info_id`,`member_name`,`address`,`dirctor_name`,`phone_number`,`employees_number`,`organ_type`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_member_infomation where id = #{value}
+		select `id`,`year`,`organ_info_id`,`member_name`,`address`,`dirctor_name`,`phone_number`,`employees_number`,`organ_type`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_member_infomation where id = #{value} and is_delete=0
 	</select>
 
 	<select id="list" resultType="com.organization.community.domain.MemberInfomationDO">
-		select `id`,`year`,`organ_info_id`,`member_name`,`address`,`dirctor_name`,`phone_number`,`employees_number`,`organ_type`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_member_infomation
-        <where>  
+		select a.id,a.year,a.organ_info_id,a.member_name,a.address,a.dirctor_name,a.phone_number,a.employees_number,a.organ_type,a.preparer,a.create_time,a.update_time,a.is_delete,b.company_name from organ_member_infomation a
+		left join organ_info b on a.organ_info_id = b.id
+		<where> a.is_delete=0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="year != null and year != ''"> and year = #{year} </if>
 		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
@@ -22,24 +23,23 @@
 		  		  <if test="preparer != null and preparer != ''"> and preparer = #{preparer} </if>
 		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
 		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
-		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
 		  		</where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 order by ${sort} ${order}
             </when>
 			<otherwise>
-                order by id desc
+                order by a.id desc
 			</otherwise>
         </choose>
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
 	</select>
-	
+
  	<select id="count" resultType="int">
 		select count(*) from organ_member_infomation
-		 <where>  
+		 <where> is_delete=0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="year != null and year != ''"> and year = #{year} </if>
 		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
@@ -55,42 +55,40 @@
 		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
 		  		</where>
 	</select>
-	 
+
 	<insert id="save" parameterType="com.organization.community.domain.MemberInfomationDO" useGeneratedKeys="true" keyProperty="id">
 		insert into organ_member_infomation
 		(
-			`year`, 
-			`organ_info_id`, 
-			`member_name`, 
-			`address`, 
-			`dirctor_name`, 
-			`phone_number`, 
-			`employees_number`, 
-			`organ_type`, 
-			`preparer`, 
-			`create_time`, 
-			`update_time`, 
-			`is_delete`
+			`year`,
+			`organ_info_id`,
+			`member_name`,
+			`address`,
+			`dirctor_name`,
+			`phone_number`,
+			`employees_number`,
+			`organ_type`,
+			`preparer`,
+			`create_time`,
+			`update_time`
 		)
 		values
 		(
-			#{year}, 
-			#{organInfoId}, 
-			#{memberName}, 
-			#{address}, 
-			#{dirctorName}, 
-			#{phoneNumber}, 
-			#{employeesNumber}, 
-			#{organType}, 
-			#{preparer}, 
-			#{createTime}, 
-			#{updateTime}, 
-			#{isDelete}
+			#{year},
+			#{organInfoId},
+			#{memberName},
+			#{address},
+			#{dirctorName},
+			#{phoneNumber},
+			#{employeesNumber},
+			#{organType},
+			#{preparer},
+			#{createTime},
+			#{updateTime}
 		)
 	</insert>
-	 
+
 	<update id="update" parameterType="com.organization.community.domain.MemberInfomationDO">
-		update organ_member_infomation 
+		update organ_member_infomation
 		<set>
 			<if test="year != null">`year` = #{year}, </if>
 			<if test="organInfoId != null">`organ_info_id` = #{organInfoId}, </if>
@@ -103,17 +101,16 @@
 			<if test="preparer != null">`preparer` = #{preparer}, </if>
 			<if test="createTime != null">`create_time` = #{createTime}, </if>
 			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
-			<if test="isDelete != null">`is_delete` = #{isDelete}</if>
 		</set>
 		where id = #{id}
 	</update>
-	
+
 	<delete id="remove">
-		delete from organ_member_infomation where id = #{value}
+		update organ_member_infomation set is_delete=1 where id = #{value}
 	</delete>
-	
+
 	<delete id="batchRemove">
-		delete from organ_member_infomation where id in 
+		update organ_member_infomation set is_delete=1 where id in
 		<foreach item="id" collection="array" open="(" separator="," close=")">
 			#{id}
 		</foreach>

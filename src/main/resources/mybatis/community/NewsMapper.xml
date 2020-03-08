@@ -9,7 +9,7 @@
 
 	<select id="list" resultType="com.organization.community.domain.NewsDO">
 		select `id`,`title`,`author`,`content`,`public_time`,`tags`,`news_type`,`status`,`allow_comment`,`allow_evaluation_star`,`update_time` from organ_news
-        <where>
+        <where> a.is_delete=0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="title != null and title != ''"> and title = #{title} </if>
 		  		  <if test="author != null and author != ''"> and author = #{author} </if>
@@ -21,7 +21,6 @@
 		  		  <if test="allowComment != null and allowComment != ''"> and allow_comment = #{allowComment} </if>
 		  		  <if test="allowEvaluationStar != null and allowEvaluationStar != ''"> and allow_evaluation_star = #{allowEvaluationStar} </if>
 		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
-		  		  and is_delete = 0
 		  		</where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
@@ -37,7 +36,8 @@
 	</select>
 
 	<select id="preList" resultType="com.organization.community.domain.NewsDO">
-		select `id`,`title`,`author`,`content`,`public_time`,`tags`,`news_type`,`status`,`allow_comment`,`allow_evaluation_star`,`update_time` from organ_news
+		select a.id,a.title,a.author,a.content,a.public_time,a.tags,a.news_type,a.status,a.allow_comment,a.allow_evaluation_star,a.update_time,b.company_name from organ_news a
+		left join organ_info b on a.organ_info_id = b.id
 		where news_type in
 			<foreach collection="typeList" item="type" index="index" open="(" close=")" separator=",">
 				#{type}
@@ -58,8 +58,9 @@
 
  	<select id="count" resultType="int">
 		select count(*) from organ_news
-		 <where>
-		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		 <where> 				  is_delete = 0
+
+			 <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="title != null and title != ''"> and title = #{title} </if>
 		  		  <if test="author != null and author != ''"> and author = #{author} </if>
 		  		  <if test="content != null and content != ''"> and content = #{content} </if>
@@ -70,7 +71,6 @@
 		  		  <if test="allowComment != null and allowComment != ''"> and allow_comment = #{allowComment} </if>
 		  		  <if test="allowEvaluationStar != null and allowEvaluationStar != ''"> and allow_evaluation_star = #{allowEvaluationStar} </if>
 		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
-				 and is_delete = 0
 		 </where>
 	</select>
 

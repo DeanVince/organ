@@ -7,14 +7,14 @@ import java.util.Date;
 
 /**
  * 社团信息人员情况表
- * 
+ *
  * @author vince
  * @email 1992lcg@163.com
  * @date 2020-01-12 18:39:42
  */
 public class EmployDO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	//主键
 	private Integer id;
 	//年份
@@ -75,6 +75,9 @@ public class EmployDO implements Serializable {
 	private Date updateTime;
 	//删除标记
 	private Boolean isDelete;
+
+	//单位名称
+	private String companyName;
 
 	/**
 	 * 设置：主键
@@ -435,5 +438,13 @@ public class EmployDO implements Serializable {
 	 */
 	public Boolean getIsDelete() {
 		return isDelete;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 }

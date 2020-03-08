@@ -48,76 +48,72 @@ function load() {
 									checkbox : true
 								},
 																{
-									field : 'id', 
-									title : '主键' 
+									field : 'id',
+									title : '主键'
 								},
 																{
-									field : 'year', 
-									title : '年份' 
+									field : 'year',
+									title : '年份'
 								},
 																{
-									field : 'organInfoId', 
-									title : '会员基本情况表id' 
+									field : 'companyName',
+									title : '会员单位名称'
 								},
 																{
-									field : 'unitMemberNumber', 
-									title : '单位会员数' 
+									field : 'unitMemberNumber',
+									title : '单位会员数'
 								},
 																{
-									field : 'individualMemberNumber', 
-									title : '个人会员数' 
+									field : 'individualMemberNumber',
+									title : '个人会员数'
 								},
 																{
-									field : 'startDate', 
-									title : '起始日期' 
+									field : 'startDate',
+									title : '起始日期'
 								},
 																{
-									field : 'termTime', 
-									title : '任期' 
+									field : 'termTime',
+									title : '任期'
 								},
 																{
-									field : 'directorNumber', 
-									title : '理事人数' 
+									field : 'directorNumber',
+									title : '理事人数'
 								},
 																{
-									field : 'standingDirectorNumber', 
-									title : '常务理事人数' 
+									field : 'standingDirectorNumber',
+									title : '常务理事人数'
 								},
 																{
-									field : 'supervisorNumber', 
-									title : '监事会监事人数' 
+									field : 'supervisorNumber',
+									title : '监事会监事人数'
 								},
 																{
-									field : 'secretariatNumber', 
-									title : '秘书处工作人员数' 
+									field : 'secretariatNumber',
+									title : '秘书处工作人员数'
 								},
 																{
-									field : 'branchesNumber', 
-									title : '分支机构数' 
+									field : 'branchesNumber',
+									title : '分支机构数'
 								},
 																{
-									field : 'representativeNumber', 
-									title : '代表机构数' 
+									field : 'representativeNumber',
+									title : '代表机构数'
 								},
 																{
-									field : 'mechanismsNumber', 
-									title : '实体机构数' 
+									field : 'mechanismsNumber',
+									title : '实体机构数'
 								},
 																{
-									field : 'preparer', 
-									title : '填表人' 
+									field : 'preparer',
+									title : '填表人'
 								},
 																{
-									field : 'createTime', 
-									title : '填写日期' 
+									field : 'createTime',
+									title : '填写日期'
 								},
 																{
-									field : 'updateTime', 
-									title : '更改日期' 
-								},
-																{
-									field : 'isDelete', 
-									title : '删除标记' 
+									field : 'updateTime',
+									title : '更改日期'
 								},
 																{
 									title : '操作',

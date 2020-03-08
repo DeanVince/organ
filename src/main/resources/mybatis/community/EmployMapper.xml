@@ -4,12 +4,14 @@
 <mapper namespace="com.organization.community.dao.EmployDao">
 
 	<select id="get" resultType="com.organization.community.domain.EmployDO">
-		select `id`,`year`,`organ_info_id`,`staff_number`,`full_time_staff_number`,`part_time_staff_number`,`organs_service_number`,`company_number`,`retirement_number`,`else_staff_number`,`below_thirty_number`,`thirtys_number`,`fourtys_number`,`fiftys_number`,`sixtys_number`,`high_school_number`,`college_number`,`degree_number`,`master_number`,`doctor_number`,`studying_abroad_number`,`worker_certificates_number`,`technical_certificates_number`,`party_deputies_number`,`people_deputies_number`,`cppcc_member_number`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_employ where id = #{value}
+		select `id`,`year`,`organ_info_id`,`staff_number`,`full_time_staff_number`,`part_time_staff_number`,`organs_service_number`,`company_number`,`retirement_number`,`else_staff_number`,`below_thirty_number`,`thirtys_number`,`fourtys_number`,`fiftys_number`,`sixtys_number`,`high_school_number`,`college_number`,`degree_number`,`master_number`,`doctor_number`,`studying_abroad_number`,`worker_certificates_number`,`technical_certificates_number`,`party_deputies_number`,`people_deputies_number`,`cppcc_member_number`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_employ where id = #{value} and is_delete=0
 	</select>
 
 	<select id="list" resultType="com.organization.community.domain.EmployDO">
-		select `id`,`year`,`organ_info_id`,`staff_number`,`full_time_staff_number`,`part_time_staff_number`,`organs_service_number`,`company_number`,`retirement_number`,`else_staff_number`,`below_thirty_number`,`thirtys_number`,`fourtys_number`,`fiftys_number`,`sixtys_number`,`high_school_number`,`college_number`,`degree_number`,`master_number`,`doctor_number`,`studying_abroad_number`,`worker_certificates_number`,`technical_certificates_number`,`party_deputies_number`,`people_deputies_number`,`cppcc_member_number`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_employ
-        <where>  
+		select a.id,a.year,a.organ_info_id,a.staff_number,a.full_time_staff_number,a.part_time_staff_number,a.organs_service_number,a.company_number,a.retirement_number,a.else_staff_number,a.below_thirty_number,a.thirtys_number,a.fourtys_number,a.fiftys_number,a.sixtys_number,a.high_school_number,a.college_number,a.degree_number,a.master_number,a.doctor_number,a.studying_abroad_number,a.worker_certificates_number,a.technical_certificates_number,a.party_deputies_number,a.people_deputies_number,a.cppcc_member_number,a.preparer,a.create_time,a.update_time,a.is_delete,b.company_name from organ_employ a
+		left join organ_info b on a.organ_info_id = b.id
+		<where>
+		         a.is_delete =0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="year != null and year != ''"> and year = #{year} </if>
 		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
@@ -39,24 +41,24 @@
 		  		  <if test="preparer != null and preparer != ''"> and preparer = #{preparer} </if>
 		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
 		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
-		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
+
 		  		</where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 order by ${sort} ${order}
             </when>
 			<otherwise>
-                order by id desc
+                order by a.id desc
 			</otherwise>
         </choose>
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
 	</select>
-	
+
  	<select id="count" resultType="int">
 		select count(*) from organ_employ
-		 <where>  
+		 <where> is_delete=0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="year != null and year != ''"> and year = #{year} </if>
 		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
@@ -86,79 +88,75 @@
 		  		  <if test="preparer != null and preparer != ''"> and preparer = #{preparer} </if>
 		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
 		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
-		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
 		  		</where>
 	</select>
-	 
+
 	<insert id="save" parameterType="com.organization.community.domain.EmployDO" useGeneratedKeys="true" keyProperty="id">
 		insert into organ_employ
 		(
-			`year`, 
-			`organ_info_id`, 
-			`staff_number`, 
-			`full_time_staff_number`, 
-			`part_time_staff_number`, 
-			`organs_service_number`, 
-			`company_number`, 
-			`retirement_number`, 
-			`else_staff_number`, 
-			`below_thirty_number`, 
-			`thirtys_number`, 
-			`fourtys_number`, 
-			`fiftys_number`, 
-			`sixtys_number`, 
-			`high_school_number`, 
-			`college_number`, 
-			`degree_number`, 
-			`master_number`, 
-			`doctor_number`, 
-			`studying_abroad_number`, 
-			`worker_certificates_number`, 
-			`technical_certificates_number`, 
-			`party_deputies_number`, 
-			`people_deputies_number`, 
-			`cppcc_member_number`, 
-			`preparer`, 
-			`create_time`, 
-			`update_time`, 
-			`is_delete`
+			`year`,
+			`organ_info_id`,
+			`staff_number`,
+			`full_time_staff_number`,
+			`part_time_staff_number`,
+			`organs_service_number`,
+			`company_number`,
+			`retirement_number`,
+			`else_staff_number`,
+			`below_thirty_number`,
+			`thirtys_number`,
+			`fourtys_number`,
+			`fiftys_number`,
+			`sixtys_number`,
+			`high_school_number`,
+			`college_number`,
+			`degree_number`,
+			`master_number`,
+			`doctor_number`,
+			`studying_abroad_number`,
+			`worker_certificates_number`,
+			`technical_certificates_number`,
+			`party_deputies_number`,
+			`people_deputies_number`,
+			`cppcc_member_number`,
+			`preparer`,
+			`create_time`,
+			`update_time`
 		)
 		values
 		(
-			#{year}, 
-			#{organInfoId}, 
-			#{staffNumber}, 
-			#{fullTimeStaffNumber}, 
-			#{partTimeStaffNumber}, 
-			#{organsServiceNumber}, 
-			#{companyNumber}, 
-			#{retirementNumber}, 
-			#{elseStaffNumber}, 
-			#{belowThirtyNumber}, 
-			#{thirtysNumber}, 
-			#{fourtysNumber}, 
-			#{fiftysNumber}, 
-			#{sixtysNumber}, 
-			#{highSchoolNumber}, 
-			#{collegeNumber}, 
-			#{degreeNumber}, 
-			#{masterNumber}, 
-			#{doctorNumber}, 
-			#{studyingAbroadNumber}, 
-			#{workerCertificatesNumber}, 
-			#{technicalCertificatesNumber}, 
-			#{partyDeputiesNumber}, 
-			#{peopleDeputiesNumber}, 
-			#{cppccMemberNumber}, 
-			#{preparer}, 
-			#{createTime}, 
-			#{updateTime}, 
-			#{isDelete}
-		)
+			#{year},
+			#{organInfoId},
+			#{staffNumber},
+			#{fullTimeStaffNumber},
+			#{partTimeStaffNumber},
+			#{organsServiceNumber},
+			#{companyNumber},
+			#{retirementNumber},
+			#{elseStaffNumber},
+			#{belowThirtyNumber},
+			#{thirtysNumber},
+			#{fourtysNumber},
+			#{fiftysNumber},
+			#{sixtysNumber},
+			#{highSchoolNumber},
+			#{collegeNumber},
+			#{degreeNumber},
+			#{masterNumber},
+			#{doctorNumber},
+			#{studyingAbroadNumber},
+			#{workerCertificatesNumber},
+			#{technicalCertificatesNumber},
+			#{partyDeputiesNumber},
+			#{peopleDeputiesNumber},
+			#{cppccMemberNumber},
+			#{preparer},
+			#{createTime},
+			#{updateTime}		)
 	</insert>
-	 
+
 	<update id="update" parameterType="com.organization.community.domain.EmployDO">
-		update organ_employ 
+		update organ_employ
 		<set>
 			<if test="year != null">`year` = #{year}, </if>
 			<if test="organInfoId != null">`organ_info_id` = #{organInfoId}, </if>
@@ -188,17 +186,16 @@
 			<if test="preparer != null">`preparer` = #{preparer}, </if>
 			<if test="createTime != null">`create_time` = #{createTime}, </if>
 			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
-			<if test="isDelete != null">`is_delete` = #{isDelete}</if>
 		</set>
 		where id = #{id}
 	</update>
-	
+
 	<delete id="remove">
-		delete from organ_employ where id = #{value}
+		update organ_employ set is_delete=1 where id = #{value}
 	</delete>
-	
+
 	<delete id="batchRemove">
-		delete from organ_employ where id in 
+		update organ_employ set is_delete=1 where id in
 		<foreach item="id" collection="array" open="(" separator="," close=")">
 			#{id}
 		</foreach>

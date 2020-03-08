@@ -3,7 +3,9 @@ package com.organization.pre.index;
 import com.organization.common.controller.BaseController;
 import com.organization.common.utils.PageUtils;
 import com.organization.common.utils.Query;
+import com.organization.community.domain.InfoDO;
 import com.organization.community.domain.NewsDO;
+import com.organization.community.service.BaseInfoService;
 import com.organization.community.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,8 @@ import java.util.Map;
 public class PreController extends BaseController {
     @Autowired
     private NewsService newsService;
+    @Autowired
+    private BaseInfoService baseInfoService;
 
     @GetMapping("index")
     String index(Model model) {
@@ -47,6 +51,10 @@ public class PreController extends BaseController {
         params1.put("newsType","政策法规");
         List<NewsDO> policiesList = newsService.list(new Query(params1));
         model.addAttribute("policiesList",policiesList);
+        params.clear();
+        params.put("limit",6);
+        List<InfoDO> comulist = baseInfoService.list(new Query(params));
+        model.addAttribute("comulist", comulist);
         model.addAttribute("user",getUser());
         return "pre/index";
     }

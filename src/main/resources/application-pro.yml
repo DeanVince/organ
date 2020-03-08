@@ -5,7 +5,7 @@ bootdo:
 logging:
   level:
     root: error
-    com.bootdo: info
+    com.bootdo: debug
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -35,10 +35,13 @@ spring:
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
     # 合并多个DruidDataSource的监控数据
     #useGlobalDataSourceStat: true
+  cache:
+    type: redis
   redis:
-      host: localhost
+      host: 122.51.199.211
       port: 6379
-      password:
+      database: 0
+      password: organ
       # 连接超时时间（毫秒）
       timeout: 10000
       jedis:

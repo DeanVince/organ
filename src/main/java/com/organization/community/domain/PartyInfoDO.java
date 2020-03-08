@@ -47,6 +47,8 @@ public class PartyInfoDO implements Serializable {
 	private Date updateTime;
 	//删除标记
 	private Boolean isDelete;
+	//单位名称
+	private String companyName;
 
 	/**
 	 * 设置：主键
@@ -239,5 +241,13 @@ public class PartyInfoDO implements Serializable {
 	 */
 	public Boolean getIsDelete() {
 		return isDelete;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 }

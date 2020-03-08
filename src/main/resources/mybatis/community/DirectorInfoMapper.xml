@@ -4,12 +4,14 @@
 <mapper namespace="com.organization.community.dao.DirectorInfoDao">
 
 	<select id="get" resultType="com.organization.community.domain.DirectorInfoDO">
-		select `id`,`year`,`organ_info_id`,`director_positon`,`director_name`,`political_landscape`,`gender`,`education_level`,`is_former`,`id_card`,`phone_number`,`mobile_phone`,`is_full_time`,`work_unit`,`unit_position`,`unit_address`,`other_social_duties`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_director_info where id = #{value}
+		select `id`,`year`,`organ_info_id`,`director_positon`,`director_name`,`political_landscape`,`gender`,`education_level`,`is_former`,`id_card`,`phone_number`,`mobile_phone`,`is_full_time`,`work_unit`,`unit_position`,`unit_address`,`other_social_duties`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_director_info where id = #{value} and is_delete=0
 	</select>
 
 	<select id="list" resultType="com.organization.community.domain.DirectorInfoDO">
-		select `id`,`year`,`organ_info_id`,`director_positon`,`director_name`,`political_landscape`,`gender`,`education_level`,`is_former`,`id_card`,`phone_number`,`mobile_phone`,`is_full_time`,`work_unit`,`unit_position`,`unit_address`,`other_social_duties`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_director_info
-        <where>  
+		select a.id,a.year,a.organ_info_id,a.director_positon,a.director_name,a.political_landscape,a.gender,a.education_level,a.is_former,a.id_card,a.phone_number,a.mobile_phone,a.is_full_time,a.work_unit,a.unit_position,a.unit_address,a.other_social_duties,a.preparer,a.create_time,a.update_time,a.is_delete,b.company_name from organ_director_info a
+		left join organ_info b on a.organ_info_id = b.id
+		  <where>
+			a.is_delete=0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="year != null and year != ''"> and year = #{year} </if>
 		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
@@ -30,24 +32,25 @@
 		  		  <if test="preparer != null and preparer != ''"> and preparer = #{preparer} </if>
 		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
 		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
-		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
+
 		  		</where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 order by ${sort} ${order}
             </when>
 			<otherwise>
-                order by id desc
+                order by a.id desc
 			</otherwise>
         </choose>
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
 	</select>
-	
+
  	<select id="count" resultType="int">
 		select count(*) from organ_director_info
-		 <where>  
+		 <where>
+			 is_delete=0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="year != null and year != ''"> and year = #{year} </if>
 		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
@@ -68,61 +71,59 @@
 		  		  <if test="preparer != null and preparer != ''"> and preparer = #{preparer} </if>
 		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
 		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
-		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
 		  		</where>
 	</select>
-	 
+
 	<insert id="save" parameterType="com.organization.community.domain.DirectorInfoDO" useGeneratedKeys="true" keyProperty="id">
 		insert into organ_director_info
 		(
-			`year`, 
-			`organ_info_id`, 
-			`director_positon`, 
-			`director_name`, 
-			`political_landscape`, 
-			`gender`, 
-			`education_level`, 
-			`is_former`, 
-			`id_card`, 
-			`phone_number`, 
-			`mobile_phone`, 
-			`is_full_time`, 
-			`work_unit`, 
-			`unit_position`, 
-			`unit_address`, 
-			`other_social_duties`, 
-			`preparer`, 
-			`create_time`, 
-			`update_time`, 
-			`is_delete`
+			`year`,
+			`organ_info_id`,
+			`director_positon`,
+			`director_name`,
+			`political_landscape`,
+			`gender`,
+			`education_level`,
+			`is_former`,
+			`id_card`,
+			`phone_number`,
+			`mobile_phone`,
+			`is_full_time`,
+			`work_unit`,
+			`unit_position`,
+			`unit_address`,
+			`other_social_duties`,
+			`preparer`,
+			`create_time`,
+			`update_time`
+
 		)
 		values
 		(
-			#{year}, 
-			#{organInfoId}, 
-			#{directorPositon}, 
-			#{directorName}, 
-			#{politicalLandscape}, 
-			#{gender}, 
-			#{educationLevel}, 
-			#{isFormer}, 
-			#{idCard}, 
-			#{phoneNumber}, 
-			#{mobilePhone}, 
-			#{isFullTime}, 
-			#{workUnit}, 
-			#{unitPosition}, 
-			#{unitAddress}, 
-			#{otherSocialDuties}, 
-			#{preparer}, 
-			#{createTime}, 
-			#{updateTime}, 
-			#{isDelete}
+			#{year},
+			#{organInfoId},
+			#{directorPositon},
+			#{directorName},
+			#{politicalLandscape},
+			#{gender},
+			#{educationLevel},
+			#{isFormer},
+			#{idCard},
+			#{phoneNumber},
+			#{mobilePhone},
+			#{isFullTime},
+			#{workUnit},
+			#{unitPosition},
+			#{unitAddress},
+			#{otherSocialDuties},
+			#{preparer},
+			#{createTime},
+			#{updateTime}
 		)
 	</insert>
-	 
+
 	<update id="update" parameterType="com.organization.community.domain.DirectorInfoDO">
-		update organ_director_info 
+		update organ_director_info
 		<set>
 			<if test="year != null">`year` = #{year}, </if>
 			<if test="organInfoId != null">`organ_info_id` = #{organInfoId}, </if>
@@ -143,17 +144,16 @@
 			<if test="preparer != null">`preparer` = #{preparer}, </if>
 			<if test="createTime != null">`create_time` = #{createTime}, </if>
 			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
-			<if test="isDelete != null">`is_delete` = #{isDelete}</if>
 		</set>
 		where id = #{id}
 	</update>
-	
+
 	<delete id="remove">
-		delete from organ_director_info where id = #{value}
+		update organ_director_info set is_delete=1 where id = #{value}
 	</delete>
-	
+
 	<delete id="batchRemove">
-		delete from organ_director_info where id in 
+		update organ_director_info set is_delete=1 where id in
 		<foreach item="id" collection="array" open="(" separator="," close=")">
 			#{id}
 		</foreach>

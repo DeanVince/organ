@@ -4,12 +4,13 @@
 <mapper namespace="com.organization.community.dao.PartyInfoDao">
 
 	<select id="get" resultType="com.organization.community.domain.PartyInfoDO">
-		select `id`,`year`,`organ_info_id`,`party_members_number`,`full_time_party_members_number`,`organization_number`,`this_year_add_number`,`party_type`,`party_relationship`,`party_building_liaison`,`league_organization_number`,`trade_union_number`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_party_info where id = #{value}
+		select `id`,`year`,`organ_info_id`,`party_members_number`,`full_time_party_members_number`,`organization_number`,`this_year_add_number`,`party_type`,`party_relationship`,`party_building_liaison`,`league_organization_number`,`trade_union_number`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_party_info where id = #{value} and is_delete=0
 	</select>
 
 	<select id="list" resultType="com.organization.community.domain.PartyInfoDO">
-		select `id`,`year`,`organ_info_id`,`party_members_number`,`full_time_party_members_number`,`organization_number`,`this_year_add_number`,`party_type`,`party_relationship`,`party_building_liaison`,`league_organization_number`,`trade_union_number`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_party_info
-        <where>  
+		select a.id,a.year,a.organ_info_id,a.party_members_number,a.full_time_party_members_number,a.organization_number,a.this_year_add_number,a.party_type,a.party_relationship,a.party_building_liaison,a.league_organization_number,a.trade_union_number,a.preparer,a.create_time,a.update_time,a.is_delete,b.company_name from organ_party_info a
+		left join organ_info b on a.organ_info_id = b.id
+		<where> a.is_delete=0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="year != null and year != ''"> and year = #{year} </if>
 		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
@@ -32,17 +33,17 @@
                 order by ${sort} ${order}
             </when>
 			<otherwise>
-                order by id desc
+                order by b.id desc
 			</otherwise>
         </choose>
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
 	</select>
-	
+
  	<select id="count" resultType="int">
 		select count(*) from organ_party_info
-		 <where>  
+		 <where> is_delete=0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="year != null and year != ''"> and year = #{year} </if>
 		  		  <if test="organInfoId != null and organInfoId != ''"> and organ_info_id = #{organInfoId} </if>
@@ -61,48 +62,46 @@
 		  		  <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
 		  		</where>
 	</select>
-	 
+
 	<insert id="save" parameterType="com.organization.community.domain.PartyInfoDO" useGeneratedKeys="true" keyProperty="id">
 		insert into organ_party_info
 		(
-			`year`, 
-			`organ_info_id`, 
-			`party_members_number`, 
-			`full_time_party_members_number`, 
-			`organization_number`, 
-			`this_year_add_number`, 
-			`party_type`, 
-			`party_relationship`, 
-			`party_building_liaison`, 
-			`league_organization_number`, 
-			`trade_union_number`, 
-			`preparer`, 
-			`create_time`, 
-			`update_time`, 
-			`is_delete`
+			`year`,
+			`organ_info_id`,
+			`party_members_number`,
+			`full_time_party_members_number`,
+			`organization_number`,
+			`this_year_add_number`,
+			`party_type`,
+			`party_relationship`,
+			`party_building_liaison`,
+			`league_organization_number`,
+			`trade_union_number`,
+			`preparer`,
+			`create_time`,
+			`update_time`
 		)
 		values
 		(
-			#{year}, 
-			#{organInfoId}, 
-			#{partyMembersNumber}, 
-			#{fullTimePartyMembersNumber}, 
-			#{organizationNumber}, 
-			#{thisYearAddNumber}, 
-			#{partyType}, 
-			#{partyRelationship}, 
-			#{partyBuildingLiaison}, 
-			#{leagueOrganizationNumber}, 
-			#{tradeUnionNumber}, 
-			#{preparer}, 
-			#{createTime}, 
-			#{updateTime}, 
-			#{isDelete}
+			#{year},
+			#{organInfoId},
+			#{partyMembersNumber},
+			#{fullTimePartyMembersNumber},
+			#{organizationNumber},
+			#{thisYearAddNumber},
+			#{partyType},
+			#{partyRelationship},
+			#{partyBuildingLiaison},
+			#{leagueOrganizationNumber},
+			#{tradeUnionNumber},
+			#{preparer},
+			#{createTime},
+			#{updateTime}
 		)
 	</insert>
-	 
+
 	<update id="update" parameterType="com.organization.community.domain.PartyInfoDO">
-		update organ_party_info 
+		update organ_party_info
 		<set>
 			<if test="year != null">`year` = #{year}, </if>
 			<if test="organInfoId != null">`organ_info_id` = #{organInfoId}, </if>
@@ -118,17 +117,16 @@
 			<if test="preparer != null">`preparer` = #{preparer}, </if>
 			<if test="createTime != null">`create_time` = #{createTime}, </if>
 			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
-			<if test="isDelete != null">`is_delete` = #{isDelete}</if>
 		</set>
 		where id = #{id}
 	</update>
-	
+
 	<delete id="remove">
-		delete from organ_party_info where id = #{value}
+		update organ_party_info set is_delete=1 where id = #{value}
 	</delete>
-	
+
 	<delete id="batchRemove">
-		delete from organ_party_info where id in 
+		update organ_party_info set is_delete=1 where id in
 		<foreach item="id" collection="array" open="(" separator="," close=")">
 			#{id}
 		</foreach>

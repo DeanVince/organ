@@ -73,7 +73,6 @@ s
 <script src="/js/plugins/layer/layer.min.js" th:src="@{/js/plugins/layer/layer.min.js}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        console.log(ctx)
         $("#login").on('click', function () {
             $("#signupForm").submit();
         });
@@ -90,7 +89,6 @@ s
     });
 
     function login() {
-        console.log(ctx)
         $.ajax({
             type: "POST",
             url: ctx + "login",
