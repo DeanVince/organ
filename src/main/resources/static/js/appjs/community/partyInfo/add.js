@@ -1,5 +1,7 @@
 $().ready(function() {
 	validateRule();
+    getComunId();
+
 });
 
 $.validator.setDefaults({
@@ -46,4 +48,23 @@ function validateRule() {
 			}
 		}
 	})
+}
+
+function getComunId() {
+    $.ajax({
+        cache: true,
+        type: "GET",
+        url: "/community/info/list",
+        async: false,
+        error: function (request) {
+            parent.layer.alert("Connection error");
+        },
+        success: function (data) {
+            $("#organInfoId").empty();
+            for(var i in data.rows){
+                var html = '<option value="' + data.rows[i].id + '">' + data.rows[i].companyName + '</option>\n';
+                $("#organInfoId").append(html);
+            }
+        }
+    });
 }

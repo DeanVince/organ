@@ -48,56 +48,58 @@ function load() {
 									checkbox : true
 								},
 																{
-									field : 'id', 
-									title : '主键' 
+									field : 'id',
+									title : '主键'
 								},
 																{
-									field : 'year', 
-									title : '年份' 
+									field : 'year',
+									title : '年份'
+								},
+								{
+									field : 'companyName',
+									title : '会员单位名称'
 								},
 																{
-									field : 'organInfoId', 
-									title : '协会基本情况表id' 
+									field : 'memberName',
+									title : '会员名称'
 								},
 																{
-									field : 'memberName', 
-									title : '会员名称' 
+									field : 'address',
+									title : '地址'
 								},
 																{
-									field : 'address', 
-									title : '地址' 
+									field : 'dirctorName',
+									title : '负责人姓名'
 								},
 																{
-									field : 'dirctorName', 
-									title : '负责人姓名' 
+									field : 'phoneNumber',
+									title : '电话'
 								},
 																{
-									field : 'phoneNumber', 
-									title : '电话' 
+									field : 'employeesNumber',
+									title : '从业人数'
 								},
 																{
-									field : 'employeesNumber', 
-									title : '从业人数' 
+									field : 'organType',
+									title : '机构类型'
 								},
 																{
-									field : 'organType', 
-									title : '机构类型' 
+									field : 'preparer',
+									title : '填表人'
 								},
 																{
-									field : 'preparer', 
-									title : '填表人' 
+									field : 'createTime',
+									title : '填写日期',
+									formatter: function (value) {
+										return dateFormat('YYYY-mm-dd',value);
+									}
 								},
 																{
-									field : 'createTime', 
-									title : '填写日期' 
-								},
-																{
-									field : 'updateTime', 
-									title : '更改日期' 
-								},
-																{
-									field : 'isDelete', 
-									title : '删除标记' 
+									field : 'updateTime',
+									title : '更改日期',
+									formatter: function (value) {
+										return dateFormat('YYYY-mm-dd',value);
+									}
 								},
 																{
 									title : '操作',
