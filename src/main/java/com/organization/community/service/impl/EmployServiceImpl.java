@@ -4,10 +4,7 @@ import com.organization.common.utils.ShiroUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.organization.community.dao.EmployDao;
 import com.organization.community.domain.EmployDO;
@@ -44,6 +41,9 @@ public class EmployServiceImpl implements EmployService {
 
 	@Override
 	public int update(EmployDO employ){
+		Calendar calendar = Calendar.getInstance();
+		int year = calendar.get(Calendar.YEAR);
+		employ.setYear(year);
 		String name = ShiroUtils.getUser().getUsername();
 		employ.setPreparer(name);
 		employ.setUpdateTime(new Date());

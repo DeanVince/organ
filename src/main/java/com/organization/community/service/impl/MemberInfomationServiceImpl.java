@@ -4,6 +4,7 @@ import com.organization.common.utils.ShiroUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +37,9 @@ public class MemberInfomationServiceImpl implements MemberInfomationService {
 
 	@Override
 	public int save(MemberInfomationDO memberInfomation){
+		Calendar calendar = Calendar.getInstance();
+		int year = calendar.get(Calendar.YEAR);
+		memberInfomation.setYear(year);
 		String name = ShiroUtils.getUser().getUsername();
 		memberInfomation.setPreparer(name);
 		return memberInfomationDao.save(memberInfomation);

@@ -4,6 +4,7 @@ import com.organization.common.utils.ShiroUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -36,8 +37,11 @@ public class DirectorInfoServiceImpl implements DirectorInfoService {
 
 	@Override
 	public int save(DirectorInfoDO directorInfo){
-		String name = ShiroUtils.getUser().getUsername();
-		directorInfo.setPreparer(name);
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        directorInfo.setYear(year);
+        String name = ShiroUtils.getUser().getUsername();
+        directorInfo.setPreparer(name);
 		return directorInfoDao.save(directorInfo);
 	}
 
