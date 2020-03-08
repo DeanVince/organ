@@ -4,7 +4,8 @@
 <mapper namespace="com.organization.community.dao.EmployDao">
 
 	<select id="get" resultType="com.organization.community.domain.EmployDO">
-		select `id`,`year`,`organ_info_id`,`staff_number`,`full_time_staff_number`,`part_time_staff_number`,`organs_service_number`,`company_number`,`retirement_number`,`else_staff_number`,`below_thirty_number`,`thirtys_number`,`fourtys_number`,`fiftys_number`,`sixtys_number`,`high_school_number`,`college_number`,`degree_number`,`master_number`,`doctor_number`,`studying_abroad_number`,`worker_certificates_number`,`technical_certificates_number`,`party_deputies_number`,`people_deputies_number`,`cppcc_member_number`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_employ where id = #{value} and is_delete=0
+		select a.id,a.year,a.organ_info_id,a.staff_number,a.full_time_staff_number,a.part_time_staff_number,a.organs_service_number,a.company_number,a.retirement_number,a.else_staff_number,a.below_thirty_number,a.thirtys_number,a.fourtys_number,a.fiftys_number,a.sixtys_number,a.high_school_number,a.college_number,a.degree_number,a.master_number,a.doctor_number,a.studying_abroad_number,a.worker_certificates_number,a.technical_certificates_number,a.party_deputies_number,a.people_deputies_number,a.cppcc_member_number,a.preparer,a.create_time,a.update_time,a.is_delete,b.company_name from organ_employ a
+																																																																																																																																																				   left join organ_info b on a.organ_info_id = b.id		where a.id = #{value} and a.is_delete=0
 	</select>
 
 	<select id="list" resultType="com.organization.community.domain.EmployDO">

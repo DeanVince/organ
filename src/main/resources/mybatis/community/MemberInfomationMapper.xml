@@ -4,7 +4,9 @@
 <mapper namespace="com.organization.community.dao.MemberInfomationDao">
 
 	<select id="get" resultType="com.organization.community.domain.MemberInfomationDO">
-		select `id`,`year`,`organ_info_id`,`member_name`,`address`,`dirctor_name`,`phone_number`,`employees_number`,`organ_type`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_member_infomation where id = #{value} and is_delete=0
+		select a.id,a.year,a.organ_info_id,a.member_name,a.address,a.dirctor_name,a.phone_number,a.employees_number,a.organ_type,a.preparer,a.create_time,a.update_time,a.is_delete,b.company_name from organ_member_infomation a
+																																																			left join organ_info b on a.organ_info_id = b.id
+		where a.id = #{value} and a.is_delete=0
 	</select>
 
 	<select id="list" resultType="com.organization.community.domain.MemberInfomationDO">

@@ -4,7 +4,9 @@
 <mapper namespace="com.organization.community.dao.MemberStaffDao">
 
 	<select id="get" resultType="com.organization.community.domain.MemberStaffDO">
-		select `id`,`year`,`organ_info_id`,`unit_member_number`,`individual_member_number`,`start_date`,`term_time`,`director_number`,`standing_director_number`,`supervisor_number`,`secretariat_number`,`branches_number`,`representative_number`,`mechanisms_number`,`preparer`,`create_time`,`update_time` from organ_member_staff where id = #{value} and is_delete=0
+		select a.id,a.year,a.organ_info_id,a.unit_member_number,a.individual_member_number,a.start_date,a.term_time,a.director_number,a.standing_director_number,a.supervisor_number,a.secretariat_number,a.branches_number,a.representative_number,a.mechanisms_number,a.preparer,a.create_time,a.update_time ,b.company_name  from organ_member_staff a
+				left join organ_info b on a.organ_info_id = b.id
+		where a.id = #{value} and a.is_delete=0
 	</select>
 
 	<select id="list" resultType="com.organization.community.domain.MemberStaffDO">

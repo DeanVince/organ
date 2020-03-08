@@ -4,7 +4,8 @@
 <mapper namespace="com.organization.community.dao.PartyInfoDao">
 
 	<select id="get" resultType="com.organization.community.domain.PartyInfoDO">
-		select `id`,`year`,`organ_info_id`,`party_members_number`,`full_time_party_members_number`,`organization_number`,`this_year_add_number`,`party_type`,`party_relationship`,`party_building_liaison`,`league_organization_number`,`trade_union_number`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_party_info where id = #{value} and is_delete=0
+		select a.id,a.year,a.organ_info_id,a.party_members_number,a.full_time_party_members_number,a.organization_number,a.this_year_add_number,a.party_type,a.party_relationship,a.party_building_liaison,a.league_organization_number,a.trade_union_number,a.preparer,a.create_time,a.update_time,a.is_delete,b.company_name from organ_party_info a
+																																																																																		left join organ_info b on a.organ_info_id = b.id		where a.id = #{value} and a.is_delete=0
 	</select>
 
 	<select id="list" resultType="com.organization.community.domain.PartyInfoDO">

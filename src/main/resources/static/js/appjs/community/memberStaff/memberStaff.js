@@ -69,7 +69,10 @@ function load() {
 								},
 																{
 									field : 'startDate',
-									title : '起始日期'
+									title : '起始日期',
+									formatter: function (value) {
+										return dateFormat('YYYY-mm-dd',value);
+									}
 								},
 																{
 									field : 'termTime',
@@ -109,11 +112,17 @@ function load() {
 								},
 																{
 									field : 'createTime',
-									title : '填写日期'
+									title : '填写日期',
+									formatter: function (value) {
+										return dateFormat('YYYY-mm-dd',value);
+									}
 								},
 																{
 									field : 'updateTime',
-									title : '更改日期'
+									title : '更改日期',
+									formatter: function (value) {
+										return dateFormat('YYYY-mm-dd',value);
+									}
 								},
 																{
 									title : '操作',

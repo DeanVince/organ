@@ -4,7 +4,9 @@
 <mapper namespace="com.organization.community.dao.DirectorInfoDao">
 
 	<select id="get" resultType="com.organization.community.domain.DirectorInfoDO">
-		select `id`,`year`,`organ_info_id`,`director_positon`,`director_name`,`political_landscape`,`gender`,`education_level`,`is_former`,`id_card`,`phone_number`,`mobile_phone`,`is_full_time`,`work_unit`,`unit_position`,`unit_address`,`other_social_duties`,`preparer`,`create_time`,`update_time`,`is_delete` from organ_director_info where id = #{value} and is_delete=0
+		select a.id,a.year,a.organ_info_id,a.director_positon,a.director_name,a.political_landscape,a.gender,a.education_level,a.is_former,a.id_card,a.phone_number,a.mobile_phone,a.is_full_time,a.work_unit,a.unit_position,a.unit_address,a.other_social_duties,a.preparer,a.create_time,a.update_time,a.is_delete,b.company_name from organ_director_info a
+																																																																																			  left join organ_info b on a.organ_info_id = b.id
+		where id = #{value} and is_delete=0
 	</select>
 
 	<select id="list" resultType="com.organization.community.domain.DirectorInfoDO">

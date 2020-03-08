@@ -1,8 +1,10 @@
 package com.organization.community.service.impl;
 
+import com.organization.common.utils.ShiroUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,11 +37,16 @@ public class MemberStaffServiceImpl implements MemberStaffService {
 
 	@Override
 	public int save(MemberStaffDO memberStaff){
+		String name = ShiroUtils.getUser().getUsername();
+		memberStaff.setPreparer(name);
 		return memberStaffDao.save(memberStaff);
 	}
 
 	@Override
 	public int update(MemberStaffDO memberStaff){
+		String name = ShiroUtils.getUser().getUsername();
+		memberStaff.setPreparer(name);
+		memberStaff.setUpdateTime(new Date());
 		return memberStaffDao.update(memberStaff);
 	}
 

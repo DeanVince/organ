@@ -8,7 +8,7 @@
 	</select>
 
 	<select id="list" resultType="com.organization.community.domain.NewsDO">
-		select `id`,`title`,`author`,`content`,`public_time`,`tags`,`news_type`,`status`,`allow_comment`,`allow_evaluation_star`,`update_time` from organ_news
+		select `id`,`title`,`author`,`content`,`public_time`,`tags`,`news_type`,`status`,`allow_comment`,`allow_evaluation_star`,`update_time` from organ_news a
         <where> a.is_delete=0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="title != null and title != ''"> and title = #{title} </if>
