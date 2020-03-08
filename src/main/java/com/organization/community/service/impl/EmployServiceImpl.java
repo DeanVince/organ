@@ -1,8 +1,10 @@
 package com.organization.community.service.impl;
 
+import com.organization.common.utils.ShiroUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,11 +37,16 @@ public class EmployServiceImpl implements EmployService {
 
 	@Override
 	public int save(EmployDO employ){
+		String name = ShiroUtils.getUser().getUsername();
+		employ.setPreparer(name);
 		return employDao.save(employ);
 	}
 
 	@Override
 	public int update(EmployDO employ){
+		String name = ShiroUtils.getUser().getUsername();
+		employ.setPreparer(name);
+		employ.setUpdateTime(new Date());
 		return employDao.update(employ);
 	}
 

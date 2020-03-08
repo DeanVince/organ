@@ -6,7 +6,7 @@
 	<select id="get" resultType="com.organization.community.domain.DirectorInfoDO">
 		select a.id,a.year,a.organ_info_id,a.director_positon,a.director_name,a.political_landscape,a.gender,a.education_level,a.is_former,a.id_card,a.phone_number,a.mobile_phone,a.is_full_time,a.work_unit,a.unit_position,a.unit_address,a.other_social_duties,a.preparer,a.create_time,a.update_time,a.is_delete,b.company_name from organ_director_info a
 																																																																																			  left join organ_info b on a.organ_info_id = b.id
-		where id = #{value} and is_delete=0
+		where a.id = #{value} and a.is_delete=0
 	</select>
 
 	<select id="list" resultType="com.organization.community.domain.DirectorInfoDO">

@@ -3,116 +3,108 @@
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="gray-bg">
-	<div class="wrapper wrapper-content ">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="ibox float-e-margins">
-					<div class="ibox-content">
-						<form class="form-horizontal m-t" id="signupForm">
-						<input id="id" name="id" th:value="${partyInfo.id}"  type="hidden">
-							<div class="form-group">	
-								<label class="col-sm-3 control-label">年份：</label>
-								<div class="col-sm-8">
-									<input id="year" name="year" th:value="${partyInfo.year}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">协会基本情况表id：</label>
-								<div class="col-sm-8">
-									<input id="organInfoId" name="organInfoId" th:value="${partyInfo.organInfoId}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">工作人员中党员总数：</label>
-								<div class="col-sm-8">
-									<input id="partyMembersNumber" name="partyMembersNumber" th:value="${partyInfo.partyMembersNumber}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">专职人员党员数：</label>
-								<div class="col-sm-8">
-									<input id="fullTimePartyMembersNumber" name="fullTimePartyMembersNumber" th:value="${partyInfo.fullTimePartyMembersNumber}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">党组织关第在本社会组织的党员数	social：</label>
-								<div class="col-sm-8">
-									<input id="organizationNumber" name="organizationNumber" th:value="${partyInfo.organizationNumber}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">本年新发展新党员人数：</label>
-								<div class="col-sm-8">
-									<input id="thisYearAddNumber" name="thisYearAddNumber" th:value="${partyInfo.thisYearAddNumber}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">党建形式：</label>
-								<div class="col-sm-8">
-									<input id="partyType" name="partyType" th:value="${partyInfo.partyType}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">党组织（党建联络员）隶属关系：</label>
-								<div class="col-sm-8">
-									<input id="partyRelationship" name="partyRelationship" th:value="${partyInfo.partyRelationship}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">党组建负责人（党建联络员）：</label>
-								<div class="col-sm-8">
-									<input id="partyBuildingLiaison" name="partyBuildingLiaison" th:value="${partyInfo.partyBuildingLiaison}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">共青团员人数量：</label>
-								<div class="col-sm-8">
-									<input id="leagueOrganizationNumber" name="leagueOrganizationNumber" th:value="${partyInfo.leagueOrganizationNumber}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">工会成员数量：</label>
-								<div class="col-sm-8">
-									<input id="tradeUnionNumber" name="tradeUnionNumber" th:value="${partyInfo.tradeUnionNumber}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">填表人：</label>
-								<div class="col-sm-8">
-									<input id="preparer" name="preparer" th:value="${partyInfo.preparer}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">填写日期：</label>
-								<div class="col-sm-8">
-									<input id="createTime" name="createTime" th:value="${partyInfo.createTime}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">更改日期：</label>
-								<div class="col-sm-8">
-									<input id="updateTime" name="updateTime" th:value="${partyInfo.updateTime}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">删除标记：</label>
-								<div class="col-sm-8">
-									<input id="isDelete" name="isDelete" th:value="${partyInfo.isDelete}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">
-								<div class="col-sm-8 col-sm-offset-3">
-									<button type="submit" class="btn btn-primary">提交</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-	</div>
-	</div>
-	<div th:include="include::footer"></div>
-	<script type="text/javascript" src="/js/appjs/community/partyInfo/edit.js">
-	</script>
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm">
+                        <input id="id" name="id" th:value="${partyInfo.id}" type="hidden">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">年份：</label>
+                            <div class="col-sm-8">
+                                <input id="year" name="year" th:value="${partyInfo.year}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">会员单位名称：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="organInfoId" name="organInfoId" onclick="getComunId()">
+                                    <option th:value="${partyInfo.organInfoId}" th:text="${partyInfo.companyName}">
+                                        1
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工作人员中党员总数：</label>
+                            <div class="col-sm-8">
+                                <input id="partyMembersNumber" name="partyMembersNumber"
+                                       th:value="${partyInfo.partyMembersNumber}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">专职人员党员数：</label>
+                            <div class="col-sm-8">
+                                <input id="fullTimePartyMembersNumber" name="fullTimePartyMembersNumber"
+                                       th:value="${partyInfo.fullTimePartyMembersNumber}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">党组织关第在本社会组织的党员数 social：</label>
+                            <div class="col-sm-8">
+                                <input id="organizationNumber" name="organizationNumber"
+                                       th:value="${partyInfo.organizationNumber}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">本年新发展新党员人数：</label>
+                            <div class="col-sm-8">
+                                <input id="thisYearAddNumber" name="thisYearAddNumber"
+                                       th:value="${partyInfo.thisYearAddNumber}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">党建形式：</label>
+                            <div class="col-sm-8">
+                                <input id="partyType" name="partyType" th:value="${partyInfo.partyType}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">党组织（党建联络员）隶属关系：</label>
+                            <div class="col-sm-8">
+                                <input id="partyRelationship" name="partyRelationship"
+                                       th:value="${partyInfo.partyRelationship}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">党组建负责人（党建联络员）：</label>
+                            <div class="col-sm-8">
+                                <input id="partyBuildingLiaison" name="partyBuildingLiaison"
+                                       th:value="${partyInfo.partyBuildingLiaison}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">共青团员人数量：</label>
+                            <div class="col-sm-8">
+                                <input id="leagueOrganizationNumber" name="leagueOrganizationNumber"
+                                       th:value="${partyInfo.leagueOrganizationNumber}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工会成员数量：</label>
+                            <div class="col-sm-8">
+                                <input id="tradeUnionNumber" name="tradeUnionNumber"
+                                       th:value="${partyInfo.tradeUnionNumber}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <button type="submit" class="btn btn-primary">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" src="/js/appjs/community/partyInfo/edit.js">
+</script>
 </body>
 </html>

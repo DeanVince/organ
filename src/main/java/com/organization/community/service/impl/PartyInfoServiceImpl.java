@@ -1,8 +1,10 @@
 package com.organization.community.service.impl;
 
+import com.organization.common.utils.ShiroUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,11 +37,16 @@ public class PartyInfoServiceImpl implements PartyInfoService {
 
 	@Override
 	public int save(PartyInfoDO partyInfo){
+		String name = ShiroUtils.getUser().getUsername();
+		partyInfo.setPreparer(name);
 		return partyInfoDao.save(partyInfo);
 	}
 
 	@Override
 	public int update(PartyInfoDO partyInfo){
+		String name = ShiroUtils.getUser().getUsername();
+		partyInfo.setPreparer(name);
+		partyInfo.setUpdateTime(new Date());
 		return partyInfoDao.update(partyInfo);
 	}
 

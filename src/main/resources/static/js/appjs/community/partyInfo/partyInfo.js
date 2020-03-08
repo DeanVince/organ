@@ -68,7 +68,7 @@ function load() {
                     },
                     {
                         field: 'organizationNumber',
-                        title: '党组织关第在本社会组织的党员数	social'
+                        title: '党组织关第在本社会组织的党员数'
                     },
                     {
                         field: 'thisYearAddNumber',

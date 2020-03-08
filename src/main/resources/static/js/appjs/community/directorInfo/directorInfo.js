@@ -72,7 +72,7 @@ function load() {
                     },
                     {
                         field: 'gender',
-                        title: '性别 男0 女1',
+                        title: '性别',
                         formatter: function (value) {
                             if (value == 1) {
                                 return '女';
@@ -86,7 +86,7 @@ function load() {
                     },
                     {
                         field: 'isFormer',
-                        title: '离退体否 0是未退休 1 退休',
+                        title: '离退体否',
                         formatter: function (value) {
                             if (value == 1) {
                                 return '退休';
@@ -109,7 +109,13 @@ function load() {
                     },
                     {
                         field: 'isFullTime',
-                        title: '专职/兼职 0专职1兼职'
+                        title: '专职/兼职',
+                        formatter: function (value) {
+                            if (value == 1) {
+                                return '兼职';
+                            }
+                            return '专职';
+                        }
                     },
                     {
                         field: 'workUnit',

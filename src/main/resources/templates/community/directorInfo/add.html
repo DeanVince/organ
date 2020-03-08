@@ -3,145 +3,133 @@
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="gray-bg">
-	<div class="wrapper wrapper-content ">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="ibox float-e-margins">
-					<div class="ibox-content">
-						<form class="form-horizontal m-t" id="signupForm">
-							<div class="form-group">	
-								<label class="col-sm-3 control-label">年份：</label>
-								<div class="col-sm-8">
-									<input id="year" name="year" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">会员基本情况表id：</label>
-								<div class="col-sm-8">
-									<input id="organInfoId" name="organInfoId" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">职务名称：</label>
-								<div class="col-sm-8">
-									<input id="directorPositon" name="directorPositon" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">姓名：</label>
-								<div class="col-sm-8">
-									<input id="directorName" name="directorName" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">政治面貌：</label>
-								<div class="col-sm-8">
-									<input id="politicalLandscape" name="politicalLandscape" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">性别 男0 女1：</label>
-								<div class="col-sm-8">
-									<input id="gender" name="gender" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">文化程度：</label>
-								<div class="col-sm-8">
-									<input id="educationLevel" name="educationLevel" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">离退体否 0是未退休 1 退休：</label>
-								<div class="col-sm-8">
-									<input id="isFormer" name="isFormer" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">身份证号：</label>
-								<div class="col-sm-8">
-									<input id="idCard" name="idCard" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">电话：</label>
-								<div class="col-sm-8">
-									<input id="phoneNumber" name="phoneNumber" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">手机：</label>
-								<div class="col-sm-8">
-									<input id="mobilePhone" name="mobilePhone" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">专职/兼职 0专职1兼职：</label>
-								<div class="col-sm-8">
-									<input id="isFullTime" name="isFullTime" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">工作单位：</label>
-								<div class="col-sm-8">
-									<input id="workUnit" name="workUnit" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">单位职务：</label>
-								<div class="col-sm-8">
-									<input id="unitPosition" name="unitPosition" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">单位地址：</label>
-								<div class="col-sm-8">
-									<input id="unitAddress" name="unitAddress" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">其它社会职务：</label>
-								<div class="col-sm-8">
-									<input id="otherSocialDuties" name="otherSocialDuties" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">填表人：</label>
-								<div class="col-sm-8">
-									<input id="preparer" name="preparer" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">填写日期：</label>
-								<div class="col-sm-8">
-									<input id="createTime" name="createTime" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">更改日期：</label>
-								<div class="col-sm-8">
-									<input id="updateTime" name="updateTime" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">删除标记：</label>
-								<div class="col-sm-8">
-									<input id="isDelete" name="isDelete" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">
-								<div class="col-sm-8 col-sm-offset-3">
-									<button type="submit" class="btn btn-primary">提交</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-	</div>
-	</div>
-	<div th:include="include::footer"></div>
-	<script type="text/javascript" src="/js/appjs/community/directorInfo/add.js">
-	</script>
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">年份：</label>
+                            <div class="col-sm-8">
+                                <input id="year" name="year" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">协会单位名称：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="organInfoId" name="organInfoId">
+                                    <option value="">1</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">职务名称：</label>
+                            <div class="col-sm-8">
+                                <input id="directorPositon" name="directorPositon" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">姓名：</label>
+                            <div class="col-sm-8">
+                                <input id="directorName" name="directorName" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">政治面貌：</label>
+                            <div class="col-sm-8">
+                                <input id="politicalLandscape" name="politicalLandscape" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">性别：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="gender" name="gender">
+                                    <option value="0">男</option>
+                                    <option value="1">女</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">文化程度：</label>
+                            <div class="col-sm-8">
+                                <input id="educationLevel" name="educationLevel" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">离退体否：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="isFormer" name="isFormer">
+                                    <option value="0">未退休</option>
+                                    <option value="1">已退休</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">身份证号：</label>
+                            <div class="col-sm-8">
+                                <input id="idCard" name="idCard" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">电话：</label>
+                            <div class="col-sm-8">
+                                <input id="phoneNumber" name="phoneNumber" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">手机：</label>
+                            <div class="col-sm-8">
+                                <input id="mobilePhone" name="mobilePhone" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">专职/兼职：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="isFullTime" name="isFullTime">
+                                    <option value="0">专职</option>
+                                    <option value="1">兼职</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工作单位：</label>
+                            <div class="col-sm-8">
+                                <input id="workUnit" name="workUnit" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">单位职务：</label>
+                            <div class="col-sm-8">
+                                <input id="unitPosition" name="unitPosition" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">单位地址：</label>
+                            <div class="col-sm-8">
+                                <input id="unitAddress" name="unitAddress" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">其它社会职务：</label>
+                            <div class="col-sm-8">
+                                <input id="otherSocialDuties" name="otherSocialDuties" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <button type="submit" class="btn btn-primary">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" src="/js/appjs/community/directorInfo/add.js">
+</script>
 </body>
 </html>

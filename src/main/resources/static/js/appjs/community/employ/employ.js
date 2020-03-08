@@ -55,8 +55,8 @@ function load() {
                         title: '年份'
                     },
                     {
-                        field: 'organInfoId',
-                        title: '会员基本情况表id'
+                        field: 'companyName',
+                        title: '会员单位名称'
                     },
                     {
                         field: 'staffNumber',
