@@ -40,13 +40,13 @@ public class OrganController extends BaseController {
     @GetMapping("basic/{id}")
     String basic(@PathVariable int id, Model model){
         putBasic(id, model);
-        return "/pre/organ/basic";
+        return "pre/organ/basic";
     }
 
     @GetMapping("director/{id}")
     String director(@PathVariable int id, Model model){
         putBasic(id, model);
-        return "/pre/organ/director";
+        return "pre/organ/director";
     }
 
     @GetMapping("employee/{id}")
@@ -54,13 +54,13 @@ public class OrganController extends BaseController {
         EmployDO employDO = employService.getOne(id);
         model.addAttribute("employDO",employDO);
         putBasic(id, model);
-        return "/pre/organ/employee";
+        return "pre/organ/employee";
     }
 
     @GetMapping("member/{id}")
     String member(@PathVariable int id, Model model){
         putBasic(id, model);
-        return "/pre/organ/member";
+        return "pre/organ/member";
     }
 
     @GetMapping("memberstaff/{id}")
@@ -68,7 +68,7 @@ public class OrganController extends BaseController {
         MemberStaffDO memberStaffDO = memberStaffService.getOne(id);
         model.addAttribute("memberStaffDO",memberStaffDO);
         putBasic(id, model);
-        return "/pre/organ/memberstaff";
+        return "pre/organ/memberstaff";
     }
 
 
@@ -78,7 +78,7 @@ public class OrganController extends BaseController {
         PartyInfoDO partyInfoDO = partyInfoService.getOne(id);
         model.addAttribute("partyInfoDO",partyInfoDO);
         putBasic(id, model);
-        return "/pre/organ/party";
+        return "pre/organ/party";
     }
 
     private void putBasic(int id, Model model) {
