@@ -1,7 +1,7 @@
 /*头部标题*/
 .header{
     height: 158px;
-    background: url("/images/图层 2.png") 75% 0px;
+    background: url("../../images/图层 2.png") 75% 0px;
 }
 
 .header .logo{
@@ -91,7 +91,7 @@
 .component .component_header .title{
     width: 138px;
     height: 33px;
-    background: url("/images/title.png") no-repeat;
+    background: url("../../images/title.png") no-repeat;
     position: absolute;
     top: -6px;
     left: -1px;
@@ -109,7 +109,7 @@
     font: 14px/28px 'Microsoft YaHei';
     color: #878787;
     width: 50px;
-    background: url("/images/more.png") 32px 6px no-repeat
+    background: url("../../images/more.png") 32px 6px no-repeat
 }
 
 .component_body{
@@ -284,4 +284,89 @@
 
 .info_detail{
     margin: 40px auto;
+}
+
+
+.web_bg{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+    min-width: 1000px;
+    z-index:-10;
+    zoom: 1;
+    /*background-color: #fff;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-position: center 0;
+}
+
+.data_bg{
+    background-image: url('../../images/data/bg.png');
+}
+
+.data-title h3{
+    color: #2A82C7;
+    font-size: 30px;
+    position: absolute;
+    z-index: 2;
+    top: 2%;
+    left: 42%;
+}
+
+
+.data-left{
+    width: 28%;
+    display: inline-block;
+}
+
+.data-right{
+    width: 68%;
+    display: inline-block;
+
+}
+.data-commpony{
+    margin: 30px 20px;
+    height: 350px;
+}
+
+.data-commpony .title{
+    color: #54e6ff;
+    font-size: 18px;
+    line-height: 50px;
+    margin-left: 50px;
+}
+
+.comun-num{
+    background: url("../../images/data/1-1框.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.comun-mem{
+    background: url("../../images/data/1-1框.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.comun-party{
+    margin-top: 20px;
+    background: url("../../images/data/2-1框.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.comun-age{
+    margin-top: 20px;
+    background: url("../../images/data/2-2框.png") no-repeat;
+    background-size: 100% 100%;
+}
+.comun-age .title,.comun-xueli .title{
+    margin-right: 50px;
+}
+
+.comun-xueli{
+    margin-top: 20px;
+    background: url("../../images/data/2-3框.png") no-repeat;
+    background-size: 100% 100%;
 }

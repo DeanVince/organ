@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:include="pre/include::header(数据可视化)"></head>
+<script src="/js/echarts.js"></script>
+<body>
+<div class="data_bg">
+    <div class="data-title">
+        <h3>数据统计与分析</h3>
+        <img src="/images/data/外框.png" alt="" style="width:100%;height:auto;">
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="data-commpony comun-num">
+                        <h3 class="title">协会数量统计</h3>
+                        <div id="comun_num" style="width: 90%;height:80%; margin-left: 5%; margin-top:
+                         5%;"></div>
+                        <script>
+                            var myChart = echarts.init(document.getElementById('comun_num'));
+                            // 指定图表的配置项和数据
+                            var option = {
+                                color: ['#F6B52E', '#68E0E3'],
+                                series: [
+                                    {
+                                        name: '协会数量',
+                                        type: 'pie',
+                                        radius: ['38%', '45%'],
+                                        avoidLabelOverlap: false,
+                                        label: {
+                                            normal: {
+                                                formatter: '{c}个   \n{b}',
+                                                fontSize: 18,
+                                                lineHeight: 30,
+                                                rich: {
+                                                    a: {
+                                                        // 没有设置 `lineHeight`，则 `lineHeight` 为 56
+                                                    }
+                                                },
+                                                align: 'center',
+                                                padding: [0, -70, 0],
+                                            }
+                                        },
+                                        labelLine:
+                                            {
+                                                normal: {
+                                                    length: 10,
+                                                    length2: 80,
+                                                    lineHeight: 20,
+                                                    lineStyle: {
+                                                        width: 3
+                                                    }
+                                                }
+                                            }
+                                        ,
+                                        data: [
+                                            {value: 16, name: '农业社团'},
+                                            {value: 5, name: '民非组织'},
+
+                                        ]
+                                    }
+                                ]
+                            };
+                            // 使用刚指定的配置项和数据显示图表。
+                            myChart.setOption(option);
+                        </script>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="data-commpony comun-party">
+                        <h3 class="title">党员数量统计</h3>
+                        <div id="comun_party" style="width: 90%;height:80%; margin: 5% auto"></div>
+                        <script>
+                            var myChart = echarts.init(document.getElementById('comun_party'));
+                            // 指定图表的配置项和数据
+                            var option = {
+                                color: ['#F6B52E', '#68E0E3', '#EB6F49'],
+                                series: [
+                                    {
+                                        name: '党员数量',
+                                        type: 'pie',
+                                        radius: ['38%', '45%'],
+                                        avoidLabelOverlap: false,
+                                        label: {
+                                            normal: {
+                                                formatter: '{c}个   \n{b}',
+                                                fontSize: 18,
+                                                lineHeight: 30,
+                                                rich: {
+                                                    a: {
+                                                        // 没有设置 `lineHeight`，则 `lineHeight` 为 56
+                                                    },
+                                                    b: {
+                                                        color: '#fff',
+                                                    }
+                                                },
+                                                align: 'center',
+                                                padding: [0, -70, 0],
+                                            }
+                                        },
+                                        labelLine:
+                                            {
+                                                normal: {
+                                                    length: 10,
+                                                    length2: 80,
+                                                    lineHeight: 20,
+                                                    lineStyle: {
+                                                        width: 3
+                                                    }
+                                                }
+                                            }
+                                        ,
+                                        data: [
+                                            {value: 16, name: '专职'},
+                                            {value: 5, name: '组织关系'},
+                                            {value: 5, name: '新党员'},
+
+                                        ]
+                                    }
+                                ]
+                            };
+                            // 使用刚指定的配置项和数据显示图表。
+                            myChart.setOption(option);
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="data-commpony comun-mem">
+                        <h3 class="title">协会成员数量及从业人数</h3>
+                        <div id="comun_mem"
+                             style="width: 80%;height:80%; margin-left: 10%;"></div>
+                        <script>
+                            var myChart = echarts.init(document.getElementById('comun_mem'));
+                            // 指定图表的配置项和数据
+                            var option = {
+
+                                legend: {
+                                    data: ['协会成员数量', '协会从业人数'],
+                                    bottom: '5%',//距离下边距
+                                    textStyle: {
+                                        color: '#fff',
+                                    }
+                                },
+                                // calculable: true,
+                                xAxis: [
+                                    {
+                                        type: 'category',
+                                        data: ['旅游协会', '瓜果协会', '河蟹协会', '生猪协会'],
+                                        axisLabel: {color: '#54e6ff'},
+                                        axisLine: {
+                                            lineStyle: {color: '#54e6ff'}    // x轴坐标轴颜色
+                                        },
+                                        axisTick: {
+                                            lineStyle: {color: '#54e6ff'}    // x轴刻度的颜色
+                                        },
+                                        nameTextStyle: {
+                                            color: '#54e6ff',
+                                            fontWeight: 'bold',
+                                        }
+                                    }
+                                ],
+                                yAxis: [
+                                    {
+                                        type: 'value',
+                                        name: '(人)',
+                                        axisLabel: {
+                                            color: '#54e6ff',
+                                            fontSize: 14,
+                                        },
+                                        axisLine: {
+                                            lineStyle: {color: '#54e6ff'}    // x轴坐标轴颜色
+                                        },
+                                        axisTick: {
+                                            lineStyle: {
+                                                color: '#54e6ff',
+                                            }    // x轴刻度的颜色
+                                        },
+                                        nameTextStyle: {
+                                            color: '#54e6ff',
+                                            fontWeight: 'bold',
+                                        },
+                                        splitLine: {
+                                            lineStyle: {
+                                                color: '#54e6ff'
+                                            }
+                                        }
+                                    }
+                                ],
+                                series: [
+                                    {
+                                        name: '协会成员数量',
+                                        type: 'bar',
+                                        data: [2.0, 4.9, 7.0, 23.2],
+                                        color: ['#F4A45E'],
+                                        label: {
+                                            show: true,
+                                            position: 'top',
+                                            distance: 20,
+                                            verticalAlign: 'middle',
+                                        }
+                                    },
+                                    {
+                                        name: '协会从业人数',
+                                        type: 'bar',
+                                        data: [2.6, 5.9, 9.0, 26.4],
+                                        color: ['#44AEFC'],
+                                    }
+                                ]
+                            };
+
+                            // 使用刚指定的配置项和数据显示图表。
+                            myChart.setOption(option);
+                        </script>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="data-commpony comun-age">
+                            <h3 class="title pull-right">年龄结构</h3>
+                            <div id="comun_age" style="width: 90%;height:80%; margin: 0 auto;
+                            margin-top:
+                         5%;"></div>
+                            <script>
+                                var myChart = echarts.init(document.getElementById('comun_age'));
+                                // 指定图表的配置项和数据
+                                var option = {
+                                        tooltip: {
+                                            trigger: 'axis',
+                                            axisPointer: {
+                                                lineStyle: {
+                                                    color: 'blue'
+                                                }
+
+                                            }
+                                        },
+
+                                        color: ['#EB6F49', '#A682E6', '#407EFD', '#F6B52E', '#68E0E3',],
+                                        xAxis: {
+                                            type: 'category',
+                                            data: ['25', '30', '35', '40', '45', '50', '60'],
+                                            name: '年龄',
+                                            axisLabel: {color: '#54e6ff'},
+                                            axisLine: {
+                                                lineStyle: {color: '#54e6ff'}    // x轴坐标轴颜色
+                                            },
+                                            axisTick: {
+                                                lineStyle: {color: '#54e6ff'}    // x轴刻度的颜色
+                                            },
+                                            nameTextStyle: {
+                                                color: '#54e6ff',
+                                                fontWeight: 'bold',
+                                            }
+                                        },
+                                        yAxis: {
+                                            type: 'value',
+                                            name: '(人)',
+                                            axisLabel: {
+                                                color: '#54e6ff',
+                                                fontSize: 14,
+                                            },
+                                            axisLine: {
+                                                lineStyle: {color: '#54e6ff'}    // x轴坐标轴颜色
+                                            },
+                                            axisTick: {
+                                                lineStyle: {
+                                                    color: '#54e6ff',
+                                                }    // x轴刻度的颜色
+                                            },
+                                            nameTextStyle: {
+                                                color: '#54e6ff',
+                                                fontWeight: 'bold',
+                                            },
+                                            splitLine: {
+                                                lineStyle: {
+                                                    color: '#54e6ff'
+                                                }
+                                            }
+                                        },
+                                        series: [{
+                                            data: [13, 32, 24, 35, 13, 2, 1],
+                                            type: 'line'
+                                        }]
+                                    }
+                                ;
+                                // 使用刚指定的配置项和数据显示图表。
+                                myChart.setOption(option);
+                            </script>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="data-commpony comun-xueli">
+                            <h3 class="title pull-right">学历结构</h3>
+                            <div id="comun_xueli" style="width: 90%;height:80%; margin-left: 5%;
+                             margin-top:
+                         5%;"></div>
+                            <script>
+                                var myChart = echarts.init(document.getElementById('comun_xueli'));
+                                // 指定图表的配置项和数据
+                                var option = {
+                                    color: ['#F6B52E', '#68E0E3', '#EB6F49', '#A682E6', '#407EFD'],
+                                    series: [
+                                        {
+                                            name: '党员数量',
+                                            type: 'pie',
+                                            radius: ['20%', '45%'],
+                                            avoidLabelOverlap: false,
+                                            label: {
+                                                normal: {
+                                                    formatter: '{c}个   \n{b}',
+                                                    fontSize: 16,
+                                                    lineHeight: 30,
+                                                    rich: {
+                                                        a: {
+                                                            // 没有设置 `lineHeight`，则 `lineHeight` 为 56
+                                                        },
+                                                        b: {
+                                                            color: '#fff',
+                                                        }
+                                                    },
+                                                    align: 'center',
+                                                    padding: [0, -40, 0],
+                                                }
+                                            },
+                                            labelLine:
+                                                {
+                                                    normal: {
+                                                        length: 30,
+                                                        length2: 50,
+                                                        lineHeight: 20,
+                                                        lineStyle: {
+                                                            width: 2
+                                                        }
+                                                    }
+                                                }
+                                            ,
+                                            data: [
+                                                {value: 20, name: '大专'},
+                                                {value: 16, name: '本科'},
+                                                {value: 18, name: '硕士'},
+                                                {value: 17, name: '博士'},
+                                                {value: 2, name: '留学人员'},
+                                            ]
+                                        }
+                                    ]
+                                };
+                                // 使用刚指定的配置项和数据显示图表。
+                                myChart.setOption(option);
+                            </script>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html><!DOCTYPE html>
+

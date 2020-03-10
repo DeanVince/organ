@@ -91,7 +91,10 @@ public class PreController extends BaseController {
         putList(model,"政策法规");
         return "pre/manager";
     }
-
+    @GetMapping("showdata/comun")
+    String showData(){
+        return "pre/data/comun";
+    }
 
 
     private void putList(Model model,String type) {
