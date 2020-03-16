@@ -25,6 +25,8 @@ public class DeptDO implements Serializable {
 	//是否删除  -1：已删除  0：正常
 	private Integer delFlag;
 
+	private int comunId;
+
 	/**
 	 * 设置：
 	 */
@@ -95,5 +97,13 @@ public class DeptDO implements Serializable {
 				", orderNum=" + orderNum +
 				", delFlag=" + delFlag +
 				'}';
+	}
+
+	public int getComunId() {
+		return comunId;
+	}
+
+	public void setComunId(int comunId) {
+		this.comunId = comunId;
 	}
 }
