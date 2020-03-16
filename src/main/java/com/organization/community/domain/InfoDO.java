@@ -367,4 +367,5 @@ public class InfoDO implements Serializable {
 	public Boolean getIsDelete() {
 		return isDelete;
 	}
+
 }

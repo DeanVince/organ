@@ -3,6 +3,8 @@ package com.organization.community.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.organization.common.utils.ShiroUtils;
+import com.organization.system.domain.UserDO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,6 +46,12 @@ public class PartyInfoController {
 	@GetMapping("/list")
 	@RequiresPermissions("community:partyInfo:partyInfo")
 	public PageUtils list(@RequestParam Map<String, Object> params){
+		//查询列表数据
+		UserDO user = ShiroUtils.getUser();
+		if(!"admin".equals(user.getUsername())){
+			Long deptId = user.getDeptId();
+			params.put("deptId",deptId);
+		}
 		//查询列表数据
         Query query = new Query(params);
 		List<PartyInfoDO> partyInfoList = partyInfoService.list(query);

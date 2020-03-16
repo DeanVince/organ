@@ -3,7 +3,9 @@ package com.organization.community.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.organization.common.utils.ShiroUtils;
 import com.organization.community.service.BaseInfoService;
+import com.organization.system.domain.UserDO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,14 +44,33 @@ public class BaseInfoController {
 
 	@ResponseBody
 	@GetMapping("/list")
+	@RequiresPermissions("community:info:list")
 	public PageUtils list(@RequestParam Map<String, Object> params){
 		//查询列表数据
-        Query query = new Query(params);
+		UserDO user = ShiroUtils.getUser();
+		if(!"admin".equals(user.getUsername())){
+			Long deptId = user.getDeptId();
+			params.put("deptId",deptId);
+		}
+		Query query = new Query(params);
 		List<InfoDO> infoList = infoService.list(query);
 		int total = infoService.count(query);
 		PageUtils pageUtils = new PageUtils(infoList, total);
 		return pageUtils;
 	}
+
+	@ResponseBody
+	@PostMapping("/list")
+	public PageUtils listper(@RequestParam Map<String, Object> params){
+		//查询列表数据
+		Query query = new Query(params);
+		List<InfoDO> infoList = infoService.list(query);
+		int total = infoService.count(query);
+		PageUtils pageUtils = new PageUtils(infoList, total);
+		return pageUtils;
+	}
+
+
 
 	@GetMapping("/add")
 	@RequiresPermissions("community:info:add")
