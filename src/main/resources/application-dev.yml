@@ -1,5 +1,5 @@
 bootdo:
-  uploadPath: /var/uploaded_files/
+  uploadPath: /Users/wangshaohua/ideaspace/organ/uploaded_files/
   username: admin
   password: 111111
 logging:

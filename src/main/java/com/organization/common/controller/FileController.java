@@ -1,6 +1,6 @@
 package com.organization.common.controller;
 
-import com.organization.common.config.BootdoConfig;
+import com.organization.common.config.OrganConfig;
 import com.organization.common.domain.FileDO;
 import com.organization.common.service.FileService;
 import com.organization.common.utils.*;
@@ -32,7 +32,7 @@ public class FileController extends BaseController {
 	private FileService sysFileService;
 
 	@Autowired
-	private BootdoConfig bootdoConfig;
+	private OrganConfig organConfig;
 
 	@GetMapping()
 	@RequiresPermissions("common:sysFile:sysFile")
@@ -97,7 +97,6 @@ public class FileController extends BaseController {
 	@RequiresPermissions("common:update")
 	public R update(@RequestBody FileDO sysFile) {
 		sysFileService.update(sysFile);
-
 		return R.ok();
 	}
 
@@ -111,7 +110,7 @@ public class FileController extends BaseController {
 		if ("test".equals(getUsername())) {
 			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
 		}
-		String fileName = bootdoConfig.getUploadPath() + sysFileService.get(id).getUrl().replace("/files/", "");
+		String fileName =  organConfig.getUploadPath() + sysFileService.get(id).getUrl().replace("/files/", "");
 		if (sysFileService.remove(id) > 0) {
 			boolean b = FileUtil.deleteFile(fileName);
 			if (!b) {
@@ -147,8 +146,9 @@ public class FileController extends BaseController {
 		fileName = FileUtil.renameToUUID(fileName);
 		FileDO sysFile = new FileDO(FileType.fileType(fileName), "/files/" + fileName, new Date());
 		try {
-			FileUtil.uploadFile(file.getBytes(), bootdoConfig.getUploadPath(), fileName);
+			FileUtil.uploadFile(file.getBytes(), organConfig.getUploadPath(), fileName);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return R.error();
 		}
 

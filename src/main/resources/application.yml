@@ -5,7 +5,7 @@ server:
 #        min-spare-threads: 30
   port: 8093
 #    uri-encoding: utf-8
-#security:
+#security:ls
 #  basic:
 #    enabled: false
 spring:

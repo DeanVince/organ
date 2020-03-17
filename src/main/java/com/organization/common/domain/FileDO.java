@@ -21,6 +21,10 @@ public class FileDO implements Serializable {
     private String url;
     // 创建时间
     private Date createDate;
+    //部门id
+    private int deptId;
+    //作者
+    private String username;
 
 
     public FileDO() {
@@ -100,5 +104,21 @@ public class FileDO implements Serializable {
                 ", url='" + url + '\'' +
                 ", createDate=" + createDate +
                 '}';
+    }
+
+    public int getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(int deptId) {
+        this.deptId = deptId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

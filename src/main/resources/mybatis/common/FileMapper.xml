@@ -14,6 +14,16 @@
 		  		  <if test="type != null and type != ''"> and type = #{type} </if>
 		  		  <if test="url != null and url != ''"> and url = #{url} </if>
 		  		  <if test="createDate != null and createDate != ''"> and create_date = #{createDate} </if>
+					<if test="deptId != null and deptId != ''">
+				and dept_id in (select comun_id from (
+				select t1.id,t1.comun_id,
+				if(find_in_set(parent_id,@pids) >0 or id=@pids,@pids := concat(@pids,',', id),0) as ischild
+				from (
+				select comun_id, dept_id id,parent_id from sys_dept t where t.del_flag =1 order by parent_id, id
+				) t1,
+				(select@pids := #{deptId}) t2
+				) t3 where ischild !=0)
+			</if>
 		  		</where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
@@ -35,6 +45,16 @@
 		  		  <if test="type != null and type != ''"> and type = #{type} </if>
 		  		  <if test="url != null and url != ''"> and url = #{url} </if>
 		  		  <if test="createDate != null and createDate != ''"> and create_date = #{createDate} </if>
+			 <if test="deptId != null and deptId != ''">
+				 and dept_id in (select comun_id from (
+				 select t1.id,t1.comun_id,
+				 if(find_in_set(parent_id,@pids) >0 or id=@pids,@pids := concat(@pids,',', id),0) as ischild
+				 from (
+				 select comun_id, dept_id id,parent_id from sys_dept t where t.del_flag =1 order by parent_id, id
+				 ) t1,
+				 (select@pids := #{deptId}) t2
+				 ) t3 where ischild !=0)
+			 </if>
 		  		</where>
 	</select>
 
@@ -43,13 +63,17 @@
 		(
 			`type`,
 			`url`,
-			`create_date`
+			`create_date`,
+		 	`dept_id`,
+		 	`username`
 		)
 		values
 		(
 			#{type},
 			#{url},
-			#{createDate}
+			#{createDate},
+			#{deptId},
+			#{username}
 		)
 	</insert>
 

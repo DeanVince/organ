@@ -1,6 +1,8 @@
 package com.organization.common.service.impl;
 
-import com.organization.common.config.BootdoConfig;
+import com.organization.common.config.OrganConfig;
+import com.organization.common.utils.ShiroUtils;
+import com.organization.system.domain.UserDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +22,7 @@ public class FileServiceImpl implements FileService {
 	private FileDao sysFileMapper;
 
 	@Autowired
-	private BootdoConfig bootdoConfig;
+	private OrganConfig organConfig;
 	@Override
 	public FileDO get(Long id){
 		return sysFileMapper.get(id);
@@ -28,16 +30,27 @@ public class FileServiceImpl implements FileService {
 
 	@Override
 	public List<FileDO> list(Map<String, Object> map){
+		UserDO user = ShiroUtils.getUser();
+		if(!"admin".equals(user.getUsername())){
+			map.put("deptId",user.getDeptId() );
+		}
 		return sysFileMapper.list(map);
 	}
 
 	@Override
 	public int count(Map<String, Object> map){
+		UserDO user = ShiroUtils.getUser();
+		if(!"admin".equals(user.getUsername())){
+			map.put("deptId",user.getDeptId() );
+		}
 		return sysFileMapper.count(map);
 	}
 
 	@Override
 	public int save(FileDO sysFile){
+		UserDO user = ShiroUtils.getUser();
+		sysFile.setDeptId(Math.toIntExact(user.getDeptId()));
+		sysFile.setUsername(user.getUsername());
 		return sysFileMapper.save(sysFile);
 	}
 
@@ -61,7 +74,7 @@ public class FileServiceImpl implements FileService {
 		Boolean isExist = false;
 		if (!StringUtils.isEmpty(url)) {
 			String filePath = url.replace("/files/", "");
-			filePath = bootdoConfig.getUploadPath() + filePath;
+			filePath = organConfig.getUploadPath() + filePath;
 			File file = new File(filePath);
 			if (file.exists()) {
 				isExist = true;

@@ -1,7 +1,7 @@
 package com.organization.system.controller;
 
 import com.organization.common.annotation.Log;
-import com.organization.common.config.BootdoConfig;
+import com.organization.common.config.OrganConfig;
 import com.organization.common.controller.BaseController;
 import com.organization.common.domain.FileDO;
 import com.organization.common.domain.Tree;
@@ -35,7 +35,7 @@ public class LoginController extends BaseController {
     @Autowired
     FileService fileService;
     @Autowired
-    BootdoConfig bootdoConfig;
+    OrganConfig organConfig;
 
     @GetMapping({"/", ""})
     String welcome(Model model) {
@@ -65,8 +65,8 @@ public class LoginController extends BaseController {
 
     @GetMapping("/login")
     String login(Model model) {
-        model.addAttribute("username", bootdoConfig.getUsername());
-        model.addAttribute("password", bootdoConfig.getPassword());
+        model.addAttribute("username", organConfig.getUsername());
+        model.addAttribute("password", organConfig.getPassword());
         return "login";
     }
 
