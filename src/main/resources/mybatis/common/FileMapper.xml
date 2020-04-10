@@ -4,18 +4,18 @@
 <mapper namespace="com.organization.common.dao.FileDao">
 
 	<select id="get" resultType="com.organization.common.domain.FileDO">
-		select `id`,`type`,`url`,`create_date` from sys_file where id = #{value}
+		select `id`,`type`,`url`,`create_date`,`filename` from sys_file where id = #{value}
 	</select>
 
 	<select id="list" resultType="com.organization.common.domain.FileDO">
-		select `id`,`type`,`url`,`create_date` from sys_file
+		select `id`,`type`,`url`,`create_date`,filename,username,dept_id from sys_file
         <where>
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="type != null and type != ''"> and type = #{type} </if>
 		  		  <if test="url != null and url != ''"> and url = #{url} </if>
 		  		  <if test="createDate != null and createDate != ''"> and create_date = #{createDate} </if>
 					<if test="deptId != null and deptId != ''">
-				and dept_id in (select comun_id from (
+				and dept_id in (select id from (
 				select t1.id,t1.comun_id,
 				if(find_in_set(parent_id,@pids) >0 or id=@pids,@pids := concat(@pids,',', id),0) as ischild
 				from (
@@ -46,7 +46,7 @@
 		  		  <if test="url != null and url != ''"> and url = #{url} </if>
 		  		  <if test="createDate != null and createDate != ''"> and create_date = #{createDate} </if>
 			 <if test="deptId != null and deptId != ''">
-				 and dept_id in (select comun_id from (
+				 and dept_id in (select id from (
 				 select t1.id,t1.comun_id,
 				 if(find_in_set(parent_id,@pids) >0 or id=@pids,@pids := concat(@pids,',', id),0) as ischild
 				 from (
@@ -65,7 +65,7 @@
 			`url`,
 			`create_date`,
 		 	`dept_id`,
-		 	`username`
+		 	`username`,filename
 		)
 		values
 		(
@@ -73,7 +73,8 @@
 			#{url},
 			#{createDate},
 			#{deptId},
-			#{username}
+			#{username},
+		 #{filename}
 		)
 	</insert>
 

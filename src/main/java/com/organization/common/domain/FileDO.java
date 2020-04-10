@@ -25,6 +25,8 @@ public class FileDO implements Serializable {
     private int deptId;
     //作者
     private String username;
+    //文件名
+    private String filename;
 
 
     public FileDO() {
@@ -120,5 +122,13 @@ public class FileDO implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }

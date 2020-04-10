@@ -5,6 +5,8 @@ import com.organization.common.domain.FileDO;
 import com.organization.common.service.FileService;
 import com.organization.common.utils.*;
 import javax.servlet.http.HttpServletRequest;
+
+import com.organization.system.domain.UserDO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -145,6 +147,10 @@ public class FileController extends BaseController {
 		String fileName = file.getOriginalFilename();
 		fileName = FileUtil.renameToUUID(fileName);
 		FileDO sysFile = new FileDO(FileType.fileType(fileName), "/files/" + fileName, new Date());
+		sysFile.setFilename(file.getOriginalFilename());
+		UserDO user = ShiroUtils.getUser();
+		sysFile.setUsername(user.getUsername());
+		sysFile.setDeptId(Math.toIntExact(user.getDeptId()));
 		try {
 			FileUtil.uploadFile(file.getBytes(), organConfig.getUploadPath(), fileName);
 		} catch (Exception e) {

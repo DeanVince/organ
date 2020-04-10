@@ -117,6 +117,7 @@
                     offset: this.offset,
                     type: this.type
                 }, function (r) {
+                    console.log(r);
                     app.total = r.total;
                     app.rows = r.rows;
                     app.page();

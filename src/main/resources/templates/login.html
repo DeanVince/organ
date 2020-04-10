@@ -39,18 +39,18 @@
                        class="form-control pword m-b" th:value="${password}"/>
                 <a id="login" class="btn btn-login btn-block">登录</a>
                 <!-- TODO: 开发时不用验证码 -->
-                <!--<div class="row">-->
-                    <!--<div class="col-xs-6 pull_left">-->
-                        <!--<div class="form-group">-->
-                            <!--<input class="form-control" type="tel" name="verify" id="verify" placeholder="请输入验证码" maxlength="4">-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="col-xs-6 pull_left">-->
-                        <!--<a href="javascript:void(0);" rel="external nofollow" title="点击更换验证码">-->
-                            <!--<img style="margin-top: 12px;" id="imgVerify" src="" alt="更换验证码" height="36" width="100%" onclick="getVerify(this);">-->
-                        <!--</a>-->
-                    <!--</div>-->
-                <!--</div>-->
+                <div class="row">
+                    <div class="col-xs-6 pull_left">
+                        <div class="form-group">
+                            <input class="form-control" type="tel" name="verify" id="verify" placeholder="请输入验证码" maxlength="4">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 pull_left">
+                        <a href="javascript:void(0);" rel="external nofollow" title="点击更换验证码">
+                            <img style="margin-top: 12px;" id="imgVerify" src="" alt="更换验证码" height="36" width="100%" onclick="getVerify(this);">
+                        </a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -78,7 +78,7 @@ s
         });
         validateRule();
         $("body").keydown(keyDownLogon);
-        // getVerify($("#imgVerify"));
+        getVerify($("#imgVerify"));
         $("#imgVerify").click()
     });
 

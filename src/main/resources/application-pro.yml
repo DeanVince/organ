@@ -1,7 +1,7 @@
 bootdo:
   uploadPath: /var/uploaded_files/
-  username: admin
-  password: 111111
+  #username: admin
+  #password: 111111
 logging:
   level:
     root: error
@@ -10,7 +10,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://122.51.199.211:3306/organ?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/organ?useUnicode=true&characterEncoding=utf8
     username: organ
     password: organ
     initialSize: 1
@@ -37,8 +37,10 @@ spring:
     #useGlobalDataSourceStat: true
   cache:
     type: redis
+  thymeleaf:
+    cache: true
   redis:
-      host: 122.51.199.211
+      host: 127.0.0.1
       port: 6379
       database: 0
       password: organ
