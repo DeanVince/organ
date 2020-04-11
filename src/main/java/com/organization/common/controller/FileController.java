@@ -5,6 +5,7 @@ import com.organization.common.domain.FileDO;
 import com.organization.common.service.FileService;
 import com.organization.common.utils.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.organization.system.domain.UserDO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -14,6 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -159,9 +163,17 @@ public class FileController extends BaseController {
 		}
 
 		if (sysFileService.save(sysFile) > 0) {
+
 			return R.ok().put("fileName",sysFile.getUrl());
 		}
 		return R.error();
+	}
+
+
+	@ResponseBody
+	@GetMapping("/download")
+	void download(HttpServletResponse response,String url,String filename) throws FileNotFoundException, UnsupportedEncodingException {
+		FileUtil.downloadLocal(response,organConfig.getUploadPath(),url,filename);
 	}
 
 

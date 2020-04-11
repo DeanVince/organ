@@ -25,14 +25,14 @@
 								</div>
 								<label class="col-sm-1 control-label">类型：</label>
 								<div class="col-sm-3">
-									<!--<input id="newsType" name="newsType" class="form-control" type="text">-->
-									<select class="form-control" name="newsType" id="newsType">
-										<option value="通知通告">通知公告</option>
-										<option value="政策法规">组织风采</option>
-										<option value="政策法规">政策法规</option>
-										<option value="评选推荐">评选推荐</option>
-										<option value="党建工作">党建工作</option>
-									</select>
+									<input id="newsType" name="newsType" class="form-control" type="text" th:value="${type}">
+									<!--<select class="form-control" name="newsType" id="newsType">-->
+										<!--<option value="通知通告">通知公告</option>-->
+										<!--<option value="政策法规">组织风采</option>-->
+										<!--<option value="政策法规">政策法规</option>-->
+										<!--<option value="评选推荐">评选推荐</option>-->
+										<!--<option value="党建工作">党建工作</option>-->
+									<!--</select>-->
 								</div>
 								<label class="col-sm-1 control-label">标签：</label>
 								<div class="col-sm-3">
@@ -58,31 +58,31 @@
 									<!--<input id="status" name="status" class="form-control" type="text">-->
 								<!--</div>-->
 							<!--</div>-->
-							<div class="form-group">
-								<label class="col-sm-2 control-label">开启评论：</label>
-								<div class="switch onoffswitch col-sm-1">
-									<div class="onoffswitch">
-										<input id="allowComment" name="allowComment" checked=""
-											   type="checkbox" value="1" class="onoffswitch-checkbox">
-										<label class="onoffswitch-label"
-												 for="allowComment"> <span class="onoffswitch-inner"></span>
-										<span class="onoffswitch-switch"></span>
-									</label>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-2 control-label">开启评星：</label>
-									<div class="switch onoffswitch col-sm-1">
-										<div class="onoffswitch">
-											<input id="allowEvaluationStar" name="allowEvaluationStar" checked=""
-												   type="checkbox" value="1" class="onoffswitch-checkbox">
-											<label class="onoffswitch-label"
-													 for="allowEvaluationStar"> <span class="onoffswitch-inner"></span>
-											<span class="onoffswitch-switch"></span>
-										</label>
-										</div>
-									</div>
-								</div>
+							<!--<div class="form-group">-->
+								<!--<label class="col-sm-2 control-label">开启评论：</label>-->
+								<!--<div class="switch onoffswitch col-sm-1">-->
+									<!--<div class="onoffswitch">-->
+										<!--<input id="allowComment" name="allowComment"-->
+											   <!--type="checkbox" value="1" class="onoffswitch-checkbox">-->
+										<!--<label class="onoffswitch-label"-->
+												 <!--for="allowComment"> <span class="onoffswitch-inner"></span>-->
+										<!--<span class="onoffswitch-switch"></span>-->
+									<!--</label>-->
+									<!--</div>-->
+								<!--</div>-->
+								<!--<div class="form-group">-->
+									<!--<label class="col-sm-2 control-label">开启评星：</label>-->
+									<!--<div class="switch onoffswitch col-sm-1">-->
+										<!--<div class="onoffswitch">-->
+											<!--<input id="allowEvaluationStar" name="allowEvaluationStar"-->
+												   <!--type="checkbox" value="1" class="onoffswitch-checkbox">-->
+											<!--<label class="onoffswitch-label"-->
+													 <!--for="allowEvaluationStar"> <span class="onoffswitch-inner"></span>-->
+											<!--<span class="onoffswitch-switch"></span>-->
+										<!--</label>-->
+										<!--</div>-->
+									<!--</div>-->
+								<!--</div>-->
 
 								<div class="text-right form-group">
 									<a class="btn btn-default waves-effect waves-light"

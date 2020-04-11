@@ -37,7 +37,8 @@ public class NewsController {
 
 	@GetMapping()
 	@RequiresPermissions("community:news:news")
-	String News(){
+	String News(Model model,String type){
+		model.addAttribute("type", type);
 	    return "community/news/news";
 	}
 
@@ -61,8 +62,9 @@ public class NewsController {
 
 	@GetMapping("/add")
 	@RequiresPermissions("community:news:add")
-	String add(){
-	    return "community/news/add";
+	String add(Model model,String type){
+		model.addAttribute("type", type);
+		return "community/news/add";
 	}
 
 	@GetMapping("/edit/{id}")

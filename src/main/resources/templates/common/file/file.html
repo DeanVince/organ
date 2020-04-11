@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bootdo - 文件管理器</title>
+    <title>文件管理器</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="shortcut icon" href="favicon.ico">
@@ -18,6 +18,14 @@
         }
         .hactive:hover{
             color: #13b5b7 !important;
+        }
+        .file-title span{
+            font: 18px/40px '';
+            font-weight: bold;
+        }
+        .file-body span{
+            color: blue;
+            font: 16px/32px '';
         }
     </style>
 </head>
@@ -59,29 +67,43 @@
         <div class="col-sm-9 animated fadeInRight">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="file-box" v-for="row in rows">
-                        <div class="file">
-                            <a href="#">
-                                <span class="corner"></span>
-                                <div class="image">
-                                    <img alt="image" class="img-responsive" :src="row.url">
-                                </div>
-                                <div class="file-name">
-                                    <br/>
-                                    <small>{{row.createDate}}</small>
-                                </div>
-                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<button
-                                    class="btn btn-warning btn-xs copy" :url="row.url">复制
-                            </button>&nbsp; &nbsp; &nbsp; &nbsp;<button class="btn btn-danger btn-xs"
-                                                                        @click="remove(row.id)">删除
-                            </button>
-                            </a>
-                        </div>
+                    <div class="file-title text-center">
+                        <span class="col-sm-4">文件名称</span>
+                        <span class="col-sm-3">上传日期</span>
+                        <span class="col-sm-2">上传人名称</span>
+                        <span class="col-sm-3">操作</span>
+                    </div>
+                    <div class="file-body text-center" v-for="row in rows">
+                        <span class="col-sm-4">{{row.filename}}</span>
+                        <span class="col-sm-3">{{row.createDate}}</span>
+                        <span class="col-sm-2">{{row.username}}</span>
+                        <span class="col-sm-3">
+                            <button class="btn btn-warning btn-xs" @click="download(row.url,row.filename)">下载</button>
+                            &nbsp; &nbsp;
+                            <button class="btn btn-danger btn-xs" @click="remove(row.id)">删除</button>
+                        </span>
+                        <!--<div class="file">-->
+                            <!--<a href="#">-->
+                                <!--<span class="corner"></span>-->
+                                <!--<div class="image">-->
+                                    <!--<img alt="image" class="img-responsive" :src="row.url">-->
+                                <!--</div>-->
+                                <!--<div class="file-name">-->
+                                    <!--<br/>-->
+                                    <!--<small>{{row.createDate}}</small>-->
+                                <!--</div>-->
+                                <!--&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<button-->
+                                    <!--class="btn btn-warning btn-xs copy" :url="row.url">复制-->
+                            <!--</button>&nbsp; &nbsp; &nbsp; &nbsp;<button class="btn btn-danger btn-xs"-->
+                                                                        <!--@click="remove(row.id)">删除-->
+                            <!--</button>-->
+                            <!--</a>-->
+                        <!--</div>-->
                     </div>
                     <div id="incomeNum"></div>
                 </div>
             </div>
-            <div>
+            <div class="text-center">
                 <ul id="page"></ul>
             </div>
         </div>
@@ -117,7 +139,7 @@
                     offset: this.offset,
                     type: this.type
                 }, function (r) {
-                    console.log(r);
+                    console.log(r)
                     app.total = r.total;
                     app.rows = r.rows;
                     app.page();
@@ -173,6 +195,14 @@
                             }
                         }
                     });
+                })
+            },
+            download: function(url,filename){
+                layer.confirm('确定要下载选中的记录？', {
+                    btn: ['确定', '取消']
+                }, function () {
+                    window.location.href = "/common/sysFile/download?url="+url+"&filename="+filename;
+                    layer.msg("下载成功");
                 })
             },
             changeType: function (i) {

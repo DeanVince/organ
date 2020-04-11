@@ -4598,6 +4598,10 @@ ul.notes li div {
     width: 220px;
 }
 
+.file-box span{
+    width: 220px;
+}
+
 .file-manager h5 {
     text-transform: uppercase;
 }
