@@ -47,6 +47,9 @@ public class MemberInfomationController {
 	public PageUtils list(@RequestParam Map<String, Object> params){
 		//查询列表数据
 		UserDO user = ShiroUtils.getUser();
+		if(user== null){
+			return null;
+		}
 		if(!"admin".equals(user.getUsername())){
 			Long deptId = user.getDeptId();
 			params.put("deptId",deptId);
